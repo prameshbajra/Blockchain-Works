@@ -57,3 +57,5 @@ blockInstance.chain[2].data = { amount: 1200000 };
 blockInstance.addBlock(new Block(7, "15/01/2017", { amount: 1234 }));
 blockInstance.addBlock(new Block(8, "16/01/2017", { amount: 19657 }));
 blockInstance.addBlock(new Block(9, "17/01/2017", { amount: 19576 }));
+
+console.log(JSON.stringify(blockInstance, null, 4));
