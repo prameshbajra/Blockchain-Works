@@ -1,4 +1,3 @@
-console.log("Pramesh");
 if (typeof web3 !== "undefined") {
     web3 = new Web3(web3.currentProvider);
 } else {
@@ -7,6 +6,8 @@ if (typeof web3 !== "undefined") {
 }
 
 web3.eth.defaultAccount = web3.eth.accounts[0];
+
+// The array parameter is the abi from the remix ide ...
 const DemoContract = web3.eth.contract([
     {
         "constant": true,
@@ -16,20 +17,6 @@ const DemoContract = web3.eth.contract([
             {
                 "name": "",
                 "type": "string"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "age",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
             }
         ],
         "payable": false,
@@ -55,6 +42,23 @@ const DemoContract = web3.eth.contract([
         "type": "function"
     },
     {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "name": "age",
+                "type": "uint256"
+            }
+        ],
+        "name": "Info",
+        "type": "event"
+    },
+    {
         "constant": false,
         "inputs": [
             {
@@ -74,15 +78,17 @@ const DemoContract = web3.eth.contract([
     }
 ]);
 
-const Demo = DemoContract.at("0x45d4931a9098b5453aafc865209dbae27eff830e");
+const Demo = DemoContract.at("0x569043a82fe94d2bab9523630683cb9bc9c0b4b4");
+const infoEvent = Demo.Info();
 
-Demo.getInfo((error, result) => {
+infoEvent.watch((error, result) => {
     if (!error) {
-        $("#data").html(`${result[0]} is ${result[1]} years old. `)
+        $("#data").html(`${result.args.name} is ${result.args.age} years old.`);
     } else {
-        console.log("Error", error);
+        console.log(error);
     }
-    $("#button").on("click", () => {
-        Demo.setInfo($("#name").val(), $("#age").val());
-    })
 });
+
+$("#button").on("click", () => {
+    Demo.setInfo($("#name").val(), $("#age").val());
+})
