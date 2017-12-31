@@ -90,5 +90,11 @@ infoEvent.watch((error, result) => {
 });
 
 $("#button").on("click", () => {
-    Demo.setInfo($("#name").val(), $("#age").val());
+    Demo.setInfo($("#name").val(), $("#age").val(), (error, response) => {
+        // Owner bahek koi aaru le setInfo() access garrna khojjyo vanney error aaunxa 
+        // Tyai error ko lai callback ho yo !!
+        if (error) {
+            console.log(error);
+        }
+    });
 })
