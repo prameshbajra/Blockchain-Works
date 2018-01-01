@@ -1,3 +1,29 @@
-body {
-    color: red;
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+input {
+    border: 0.2rem dotted black;
+    margin-left: 2rem;
+    padding: 1rem;
+}
+
+p,
+h3 {
+    font-weight: bold;
+    margin-left: 1rem;
+    padding: 1rem;
+}
+
+button {
+    margin-top: 1rem;
+    padding: 1rem;
+    margin-left: 2rem;
 }

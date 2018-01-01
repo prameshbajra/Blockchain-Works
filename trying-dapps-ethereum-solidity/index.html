@@ -6,18 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Demo Dapp</title>
+    <link rel="stylesheet" href="./index.css">
     <script src="./node_modules/web3/dist/web3.min.js"></script>
 </head>
 
 <body>
     <div class="container">
         <h1>... This is Dapp demo ...</h1>
+        <hr>
+        <p id = "counts"></p>
+        <hr>
+        <p id = "hash"></p>
+        <hr>
+        <p id = "blockNumber"></p>
+        <hr>
         <h3 id = "data"></h3>
-        <p>Name </p>
-        <input type="text" id="name" />
+        <hr>
+        <p>First Name </p>
+        <input type="text" id="firstName" />
+        <br>
+        <p>Last Name </p>
+        <input type="text" id="lastName" />
         <br>
         <p>Age </p>
-        <input type="text" id="age" />
+        <input type="number" id="age" />
         <br>
         <button id = "button">Click Click</button>
     </div>

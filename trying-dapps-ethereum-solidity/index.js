@@ -8,15 +8,61 @@ if (typeof web3 !== "undefined") {
 web3.eth.defaultAccount = web3.eth.accounts[0];
 
 // The array parameter is the abi from the remix ide ...
-const DemoContract = web3.eth.contract([
+var MainContract = web3.eth.contract([
     {
         "constant": true,
         "inputs": [],
-        "name": "name",
+        "name": "getInformations",
         "outputs": [
             {
                 "name": "",
-                "type": "string"
+                "type": "address[]"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "informationAccounts",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "_address",
+                "type": "address"
+            }
+        ],
+        "name": "getInformation",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "name": "",
+                "type": "bytes16"
+            },
+            {
+                "name": "",
+                "type": "bytes16"
             }
         ],
         "payable": false,
@@ -26,12 +72,8 @@ const DemoContract = web3.eth.contract([
     {
         "constant": true,
         "inputs": [],
-        "name": "getInfo",
+        "name": "countInformations",
         "outputs": [
-            {
-                "name": "",
-                "type": "string"
-            },
             {
                 "name": "",
                 "type": "uint256"
@@ -39,6 +81,32 @@ const DemoContract = web3.eth.contract([
         ],
         "payable": false,
         "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_address",
+                "type": "address"
+            },
+            {
+                "name": "_age",
+                "type": "uint256"
+            },
+            {
+                "name": "_firstName",
+                "type": "bytes16"
+            },
+            {
+                "name": "_lastName",
+                "type": "bytes16"
+            }
+        ],
+        "name": "setInformation",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -46,8 +114,13 @@ const DemoContract = web3.eth.contract([
         "inputs": [
             {
                 "indexed": false,
-                "name": "name",
-                "type": "string"
+                "name": "firstName",
+                "type": "bytes16"
+            },
+            {
+                "indexed": false,
+                "name": "lastName",
+                "type": "bytes16"
             },
             {
                 "indexed": false,
@@ -55,42 +128,42 @@ const DemoContract = web3.eth.contract([
                 "type": "uint256"
             }
         ],
-        "name": "Info",
+        "name": "InformationInfoEvent",
         "type": "event"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "_name",
-                "type": "string"
-            },
-            {
-                "name": "_age",
-                "type": "uint256"
-            }
-        ],
-        "name": "setInfo",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
     }
 ]);
 
-const Demo = DemoContract.at("0x569043a82fe94d2bab9523630683cb9bc9c0b4b4");
-const infoEvent = Demo.Info();
+var Main = MainContract.at("0x5eaf049dc767d77fc43985e9dfb8daaf92e9d232");
+var informationEvent = Main.InformationInfoEvent({}, "latest");
 
-infoEvent.watch((error, result) => {
+$("#hash").hide();
+$("#blockNumber").hide();
+$("#data").hide();
+
+informationEvent.watch((error, result) => {
     if (!error) {
-        $("#data").html(`${result.args.name} is ${result.args.age} years old.`);
+        if (result.blockHash !== $("#hash").html()) {
+        }
+        $("#hash").show();
+        $("#hash").html(`Block Hash : ${result.blockHash}`);
+        $("#blockNumber").show();
+        $("#blockNumber").html(`Block number : ${result.blockNumber}`);
+        console.log(result);
+        $("#data").show();
+        $("#data").html(`${web3.toAscii(result.args.firstName)} ${web3.toAscii(result.args.lastName)} is ${result.args.age} years old.`);
     } else {
         console.log(error);
     }
 });
 
+Main.countInformations((error, response) => {
+    if (response) {
+        $("#counts").html(`Count : ${response.c}`);
+    }
+});
+
 $("#button").on("click", () => {
-    Demo.setInfo($("#name").val(), $("#age").val(), (error, response) => {
+    Main.setInformation(web3.eth.defaultAccount, $("#age").val(), $("#firstName").val(), $("#lastName").val(), (error, response) => {
         // Owner bahek koi aaru le setInfo() access garrna khojjyo vanney error aaunxa 
         // Tyai error ko lai callback ho yo !!
         if (error) {

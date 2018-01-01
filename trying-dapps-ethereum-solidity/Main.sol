@@ -1,16 +1,36 @@
 pragma solidity ^0.4.18;
 
-contract Main {
+contract Owned {
+    address owner;
+
+    function Owned() public {
+        owner = msg.sender;
+    }
+
+    modifier onlyOwner {
+        require(msg.sender == owner);
+        _;
+    }
+}
+
+contract Main is Owned {
     struct Information {
-        string firstName;
-        string lastName;
+        // Using bytes16 instead of string because string is costly in ethereum network ...
+        bytes16 firstName;
+        bytes16 lastName;
         uint age;
     }
     
     mapping (address => Information) informations;
     address[] public informationAccounts;
 
-    function setInformation(address _address, uint _age, string _firstName, string _lastName) public {
+    event InformationInfoEvent (
+        bytes16 firstName,
+        bytes16 lastName,
+        uint age
+    );
+
+    function setInformation(address _address, uint _age, bytes16 _firstName, bytes16 _lastName) onlyOwner public {
         var information = informations[_address];
         
         information.age = _age;
@@ -18,17 +38,18 @@ contract Main {
         information.lastName = _lastName;
 
         informationAccounts.push(_address) - 1;
+        InformationInfoEvent(_firstName, _lastName, _age);
     }
 
-    function getInformation(address _address) view public returns (uint, string, string) {
+    function getInformation(address _address) view public returns (uint, bytes16, bytes16) {
         return (informations[_address].age, informations[_address].firstName, informations[_address].lastName);
     } 
 
-    function getInformations() view public returns(address[]){
+    function getInformations() view public returns(address[]) {
         return informationAccounts;
     }
 
-    function countInstructors() view public returns (uint) {
+    function countInformations() view public returns (uint) {
         return informationAccounts.length;
     }
 }
