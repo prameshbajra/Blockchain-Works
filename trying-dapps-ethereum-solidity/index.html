@@ -7,34 +7,42 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Demo Dapp</title>
     <link rel="stylesheet" href="./index.css">
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
     <script src="./node_modules/web3/dist/web3.min.js"></script>
 </head>
 
 <body>
     <div class="container">
-        <h1>... This is Dapp demo ...</h1>
+        <h1 class="text-center">... This is Dapp demo ...</h1>
         <hr>
-        <p id = "counts"></p>
+        <div id="jumbotron" class="jumbotron">
+            <p id="counts"></p>
+            <p id="hash"></p>
+            <p id="blockNumber"></p>
+            <h3 id="data"></h3>
+        </div>
         <hr>
-        <p id = "hash"></p>
-        <hr>
-        <p id = "blockNumber"></p>
-        <hr>
-        <h3 id = "data"></h3>
-        <hr>
-        <p>First Name </p>
-        <input type="text" id="firstName" />
-        <br>
-        <p>Last Name </p>
-        <input type="text" id="lastName" />
-        <br>
-        <p>Age </p>
-        <input type="number" id="age" />
-        <br>
-        <button id = "button">Click Click</button>
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <p>First Name </p>
+                    <input class="form-control" type="text" id="firstName" />
+                    <br>
+                    <p>Last Name </p>
+                    <input class="form-control" type="text" id="lastName" />
+                    <br>
+                    <p>Age </p>
+                    <input class="form-control" type="number" id="age" />
+                    <br>
+                    <button class="btn btn-info btn-block" id="button">Click Click</button>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.js"></script>
-    <script src = "./index.js"></script>
+    <script src="./index.js"></script>
 </body>
 
 </html>

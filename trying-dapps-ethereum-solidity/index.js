@@ -133,23 +133,19 @@ var MainContract = web3.eth.contract([
     }
 ]);
 
-var Main = MainContract.at("0x5eaf049dc767d77fc43985e9dfb8daaf92e9d232");
+var Main = MainContract.at("0x60f8004b96d2cd0f1ac842e24564a8028fe9bdae");
 var informationEvent = Main.InformationInfoEvent({}, "latest");
 
-$("#hash").hide();
-$("#blockNumber").hide();
-$("#data").hide();
+$("#jumbotron").hide();
 
 informationEvent.watch((error, result) => {
     if (!error) {
         if (result.blockHash !== $("#hash").html()) {
         }
-        $("#hash").show();
         $("#hash").html(`Block Hash : ${result.blockHash}`);
-        $("#blockNumber").show();
         $("#blockNumber").html(`Block number : ${result.blockNumber}`);
         console.log(result);
-        $("#data").show();
+        $("#jumbotron").show();
         $("#data").html(`${web3.toAscii(result.args.firstName)} ${web3.toAscii(result.args.lastName)} is ${result.args.age} years old.`);
     } else {
         console.log(error);
