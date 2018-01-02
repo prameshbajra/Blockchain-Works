@@ -4,7 +4,8 @@ const VotingContract = web3.eth.contract(abi);
 
 // In your nodejs console, execute contractInstance.address to get the address at
 //  which the contract is deployed and change the line below to use your deployed address
-const contractInstance = VotingContract.at('0x03531cdcf2a22bf7e4eda2bc58e39c564025d4fe');
+// This needs to be updated everytime account is created ...
+const contractInstance = VotingContract.at('Enter the address ...');
 const candidates = {
     "Suzal": "candidate-1",
     "Pramesh": "candidate-2",
