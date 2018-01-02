@@ -23,15 +23,7 @@ contract Voting {
         candidateList = candidateNames;
     }
 
-    function getCandidateList() view public returns (bytes32[]) {
-        return candidateList;
-    }
-
-    function setCandidates(bytes32 candidate) public {
-        candidateList.push(candidate);
-    }
-
-    // This function returns the total votes a candidate has received so far
+     // This function returns the total votes a candidate has received so far
     function totalVotesFor(bytes32 candidate) view public returns(uint8) {
         require(validCandidate(candidate));
         return votesReceived[candidate];

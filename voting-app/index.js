@@ -5,7 +5,9 @@ const VotingContract = web3.eth.contract(abi);
 // In your nodejs console, execute contractInstance.address to get the address at
 //  which the contract is deployed and change the line below to use your deployed address
 // This needs to be updated everytime account is created ...
+// This instance has methods for all made in solidity ...
 const contractInstance = VotingContract.at('Enter the address ...');
+
 const candidates = {
     "Suzal": "candidate-1",
     "Pramesh": "candidate-2",
@@ -26,7 +28,7 @@ $(document).ready(function () {
     candidateNames = Object.keys(candidates);
     for (var i = 0; i < candidateNames.length; i++) {
         let name = candidateNames[i];
-        let val = contractInstance.totalVotesFor.call(name).toString()
+        let val = contractInstance.totalVotesFor.call(name).toString();
         $("#" + candidates[name]).html(val);
     }
 });
