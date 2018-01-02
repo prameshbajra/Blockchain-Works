@@ -22,6 +22,5 @@
 - Copy the **Transaction Block Address** from `remix.ethereum.org` which is generated from creating a contract.
 
 
-> **Note** : This might not work right away. So, make sure you restart the `lite-server` in your  **work environment** and also consider restarting your browser.
-<br/>  
+> **Note** : This might not work right away. So, make sure you restart the `lite-server` in your  **work environment** and also consider restarting your browser.  
 > **Reminder** : Currently working off `Main.sol`.
