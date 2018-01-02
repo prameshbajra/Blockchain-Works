@@ -1,4 +1,4 @@
-pragma solidity ^ 0.4 .18;
+pragma solidity ^0.4.18;
 // We have to specify what version of compiler this code will compile with
 
 contract Voting {
@@ -21,6 +21,14 @@ contract Voting {
     */
     function Voting(bytes32[] candidateNames) public {
         candidateList = candidateNames;
+    }
+
+    function getCandidateList() view public returns (bytes32[]) {
+        return candidateList;
+    }
+
+    function setCandidates(bytes32 candidate) public {
+        candidateList.push(candidate);
     }
 
     // This function returns the total votes a candidate has received so far

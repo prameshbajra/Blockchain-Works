@@ -40,6 +40,7 @@ contract Main is Owned {
         informationAccounts.push(_address) - 1;
         InformationInfoEvent(_firstName, _lastName, _age);
     }
+    
 
     function getInformation(address _address) view public returns (uint, bytes16, bytes16) {
         return (informations[_address].age, informations[_address].firstName, informations[_address].lastName);
