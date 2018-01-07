@@ -24,3 +24,5 @@ Then do what you plan to do. May be `truffle.cmd migrate or deploy?`.
 
 > Good luck
 
+> **Alert** : __There is problem with geth and truffle in this small project. This might not work.__
+
