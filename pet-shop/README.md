@@ -20,4 +20,4 @@ Steps to use with testrpc:
 
 > Happy working.
 
-> If `ganache` is installed/ used then `testrpc` is not required I guess. 
+> If `ganache` is installed/ used then `testrpc` is not required. Also, `Ganache` is a easy start up(Starts with 10 test accounts in an instance) plus the transactions are faster in this than `TestRPC`.
