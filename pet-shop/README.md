@@ -4,6 +4,8 @@
 
 Steps to use with testrpc:
 
+> Do not forget to manage the ports ...
+
 - Open `testrpc` in one terminal.
 
 - Write code / Complete app.
@@ -17,3 +19,5 @@ Steps to use with testrpc:
 - Run by : `npm run dev` or `lite-server`.
 
 > Happy working.
+
+> If `ganache` is installed/ used then `testrpc` is not required I guess. 
