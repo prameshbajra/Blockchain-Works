@@ -24,13 +24,13 @@ App = {
     initContract: function () {
         $.getJSON('Showroom.json', function (data) {
             // Get the necessary contract artifact file and instantiate it with truffle-contract
-            var AdoptionArtifact = data;
-            App.contracts.Adoption = TruffleContract(AdoptionArtifact);
+            var ShowroonArtifact = data;
+            App.contracts.Showroom = TruffleContract(ShowroonArtifact);
             // Set the provider for our contract
-            App.contracts.Adoption.setProvider(App.web3Provider);
+            App.contracts.Showroom.setProvider(App.web3Provider);
             // Use our contract to retrieve and mark the adopted pets
             var showroomInstance;
-            App.contracts.Adoption.deployed().then(function (instance) {
+            App.contracts.Showroom.deployed().then(function (instance) {
                 showroomInstance = instance;
                 return showroomInstance.getName.call();
             }).then(function (name) {
@@ -38,20 +38,32 @@ App = {
             }).catch(function (err) {
                 console.log(err.message);
             });
-            App.contracts.Adoption.deployed().then(function (instance) {
+            App.contracts.Showroom.deployed().then(function (instance) {
                 showroomInstance = instance;
                 return showroomInstance.getLocation.call();
             }).then(function (location) {
-                $("#location").html(location);
+                $("#locationH4").html(location);
             }).catch(function (err) {
                 console.log(err.message);
             });
         });
     },
+
+    handler: function () {
+        App.contracts.Showroom.deployed().then(function (instance) {
+            showroomInstance = instance;
+            console.log($('#location').val());
+            showroomInstance.setLocation($('#location').val());
+        });
+    }
 };
 
 $(function () {
     $(window).load(function () {
         App.init();
+    });
+    $('#button').on('click', () => {
+        console.log("Clicked");
+        App.handler();
     });
 });
