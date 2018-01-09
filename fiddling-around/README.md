@@ -1,7 +1,7 @@
 # Boilerplate for Truffle</h1>
 <br>
 <br>
-#### ( Web3 + Bootstrap + Truffle + Test + jQuery )
+( Web3 + Bootstrap + Truffle + Test + jQuery )
 <br>
 
     Best way to get started using trulle to make decentralized apps.
