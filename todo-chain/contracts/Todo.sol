@@ -21,4 +21,5 @@ contract Todo {
     function getTodo() isMyAddress constant public returns (bytes32[]) {
         return todos;
     }
+
 }

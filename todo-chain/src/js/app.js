@@ -35,8 +35,10 @@ App = {
                 return todoInstance.getTodo.call();
             }).then(function (todos) {
                 $("#todos").html("Things");
+                $("#todos").append("<br/>");
                 for (let i = 0; i < todos.length; i++) {
-                    $("#todos").append(todos[i]);
+                    $("#todos").append(web3.toAscii(todos[i]));
+                    $("#todos").append("<br/>");
                 }
             }).catch(function (err) {
                 console.log(err.message);
@@ -45,16 +47,26 @@ App = {
     },
 
     handler: function () {
-        const value = $('#todo').val();
-        App.contracts.Todo.deployed().then(function (instance) {
-            todoInstance = instance;
-            todoInstance.setTodo.call(value);
-        });
+        const value = $('#todo').val().trim();
+        if (value.length > 0) {
+            App.contracts.Todo.deployed().then(function (instance) {
+                todoInstance = instance;
+                return todoInstance.setTodo(value);
+            }).then((data) => {
+                $('#info').slideDown();
+                $('#info').html("Please refesh the page to see the change ...");
+            }).catch((err) => {
+                console.log(err);
+            });
+        } else {
+            alert("How funny error. And guess what? It's your fault.");
+        }
     }
 };
 
 $(function () {
     $(window).load(function () {
+        $("#info").hide();
         App.init();
     });
     $('#todoButton').on('click', () => {
