@@ -15,6 +15,8 @@
 
 - Configure `app.js` according to your needs.
 
+- Now `truffle compile` then `truffle migrate`.
+
 - Using `Ganache` as a `testrpc` running in private test net - `localhost:8545`.
 
     

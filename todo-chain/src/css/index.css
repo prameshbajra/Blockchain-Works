@@ -1,0 +1,8 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+textarea {
+    min-height: 10rem;
+    resize: vertical;
+}

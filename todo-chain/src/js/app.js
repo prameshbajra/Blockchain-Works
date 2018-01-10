@@ -34,11 +34,8 @@ App = {
                 todoInstance = instance;
                 return todoInstance.getTodo.call();
             }).then(function (todos) {
-                $("#todos").html("Things");
-                $("#todos").append("<br/>");
                 for (let i = 0; i < todos.length; i++) {
-                    $("#todos").append(web3.toAscii(todos[i]));
-                    $("#todos").append("<br/>");
+                    $("#todos").append(`${i + 1}\) ${web3.toAscii(todos[i])} <br>`);
                 }
             }).catch(function (err) {
                 console.log(err.message);
@@ -54,12 +51,12 @@ App = {
                 return todoInstance.setTodo(value);
             }).then((data) => {
                 $('#info').slideDown();
-                $('#info').html("Please refesh the page to see the change ...");
+                $('#info').html("Please be patient and refesh the page to see the change ...");
             }).catch((err) => {
                 console.log(err);
             });
         } else {
-            alert("How funny error. And guess what? It's your fault.");
+            alert("Sorry for the inconvienence but the field cannot be empty.");
         }
     }
 };
@@ -67,10 +64,11 @@ App = {
 $(function () {
     $(window).load(function () {
         $("#info").hide();
+        $("#todos").html("");
         App.init();
+        $('#todoButton').on('click', () => {
+            App.handler();
+        });
     });
-    $('#todoButton').on('click', () => {
-        console.log("Clicked");
-        App.handler();
-    });
+
 });
