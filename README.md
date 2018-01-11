@@ -4,6 +4,5 @@
 
 ## Contributors 
 
-- Pramesh Bajracharya
-
-- Rupesh Maharjan
+- [Pramesh Bajracharya](http://bajracharya.me)
+ 
