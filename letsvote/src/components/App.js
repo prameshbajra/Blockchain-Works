@@ -6,7 +6,7 @@ import store from '../store/store'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import Header from '../components/Header'
-import Candidate from '../components/Candidate'
+import CandidateList from '../components/CandidateList'
 import AddCandidate from '../components/AddCandidate'
 
 import '../css/App.css'
@@ -34,11 +34,11 @@ class App extends Component {
     }
 
     instantiateContract() {
+        let votingContractInstance;
         const contract = require('truffle-contract')
         const votingContract = contract(VotingContract)
         votingContract.setProvider(this.state.web3.currentProvider)
         // Get accounts.
-        let votingContractInstance;
         this.state.web3.eth.getAccounts((error, accounts) => {
             votingContract.deployed().then((instance) => {
                 votingContractInstance = instance
@@ -46,7 +46,9 @@ class App extends Component {
                 return votingContractInstance.getAllCandidates.call();
             }).then((result) => {
                 // Get the value from the contract to prove it worked.
-                console.log(result);
+                this.setState(() => ({
+                    allCandidates: result
+                }));
             })
         })
     }
@@ -59,7 +61,7 @@ class App extends Component {
                         <Header />
                         <Switch>
                             <Route exact path="/addCandidate" component={AddCandidate} />
-                            <Route exact path="/" component={Candidate} />
+                            <Route exact path="/" component={CandidateList} />
                         </Switch>
                     </div>
                 </BrowserRouter>
@@ -68,4 +70,4 @@ class App extends Component {
     }
 }
 
-export default App
+export default App;
