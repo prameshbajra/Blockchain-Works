@@ -35,8 +35,15 @@ App = {
                 return todoInstance.getTodo.call();
             }).then(function (todos) {
                 for (let i = 0; i < todos.length; i++) {
-                    $("#todos").append(`${i + 1}\) ${web3.toAscii(todos[i])} <br>`);
+                    $("#todos").append(`
+                        <li class = "list-group-item">
+                            ${i + 1}. ${web3.toAscii(todos[i])}
+                        </li>
+                    `);
                 }
+                $('.remove').on('click', () => {
+                    console.log("Remove 1");
+                });
             }).catch(function (err) {
                 console.log(err.message);
             });
@@ -58,8 +65,8 @@ App = {
         } else {
             alert("Sorry for the inconvienence but the field cannot be empty.");
         }
-    }
-};
+    },
+}
 
 $(function () {
     $(window).load(function () {
@@ -69,6 +76,7 @@ $(function () {
         $('#todoButton').on('click', () => {
             App.handler();
         });
+
     });
 
 });
