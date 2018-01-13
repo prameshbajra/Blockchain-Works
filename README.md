@@ -1,6 +1,7 @@
-# Blockchain development
+# Blockchain Works
 
-> Learning some blockchain concepts ...
+> My journey to BlockChain ...
+> Collection of my Blockchain apps ...
 
 ## Contributors 
 
