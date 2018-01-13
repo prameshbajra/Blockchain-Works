@@ -4,11 +4,9 @@ import getWeb3 from '../utils/getWeb3'
 import { Provider } from 'react-redux'
 import store from '../store/store'
 
-import Header from '../components/Header';
+import Header from '../components/Header'
+import Candidate from '../components/Candidate'
 
-import '../css/oswald.css'
-import '../css/open-sans.css'
-import '../css/pure-min.css'
 import '../css/App.css'
 
 const storeInstance = store();
@@ -58,6 +56,7 @@ class App extends Component {
             <Provider store={storeInstance}>
                 <div className="container">
                     <Header />
+                    <Candidate />
                 </div>
             </Provider>
         );

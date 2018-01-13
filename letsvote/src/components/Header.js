@@ -3,7 +3,13 @@ import React from 'react';
 const Header = () => {
     return (
         <div>
-            <h1>HEADER</h1>
+            <nav className="navbar navbar-default">
+                <div className="container-fluid">
+                    <div className="navbar-header">
+                        <a className="navbar-brand" href="#">Decentralized Voting</a>
+                    </div>
+                </div>
+            </nav>
         </div>
     );
 }

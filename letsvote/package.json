@@ -49,8 +49,10 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "dotenv": "^2.0.0",
     "react": "^15.4.2",
+    "react-bootstrap": "^0.32.0",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2"
