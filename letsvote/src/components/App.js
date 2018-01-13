@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import SimpleStorageContract from '../../build/contracts/SimpleStorage.json'
 import getWeb3 from '../utils/getWeb3'
+import { Provider } from 'react-redux'
+import store from '../store/store'
+
+import Header from '../components/Header';
 
 import '../css/oswald.css'
 import '../css/open-sans.css'
 import '../css/pure-min.css'
 import '../css/App.css'
+
+const storeInstance = store();
 
 class App extends Component {
     constructor(props) {
@@ -30,8 +36,8 @@ class App extends Component {
         const contract = require('truffle-contract')
         const simpleStorage = contract(SimpleStorageContract)
         simpleStorage.setProvider(this.state.web3.currentProvider)
-        var simpleStorageInstance;
         // Get accounts.
+        let simpleStorageInstance;
         this.state.web3.eth.getAccounts((error, accounts) => {
             simpleStorage.deployed().then((instance) => {
                 simpleStorageInstance = instance
@@ -49,12 +55,11 @@ class App extends Component {
 
     render() {
         return (
-            <div className="container">
-                <h1 className="text-center">Good to Go!</h1>
-                <h3 className="text-center">
-                    {this.state.storageValue}
-                </h3>
-            </div>
+            <Provider store={storeInstance}>
+                <div className="container">
+                    <Header />
+                </div>
+            </Provider>
         );
     }
 }
