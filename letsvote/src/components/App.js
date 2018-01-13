@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import SimpleStorageContract from '../../build/contracts/SimpleStorage.json'
+import VotingContract from '../../build/contracts/Voting.json'
 import getWeb3 from '../utils/getWeb3'
 import { Provider } from 'react-redux'
 import store from '../store/store'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import Header from '../components/Header'
 import Candidate from '../components/Candidate'
+import AddCandidate from '../components/AddCandidate'
 
 import '../css/App.css'
 
@@ -15,7 +17,8 @@ class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            web3: null
+            web3: null,
+            allCandidates: []
         }
     }
 
@@ -32,21 +35,18 @@ class App extends Component {
 
     instantiateContract() {
         const contract = require('truffle-contract')
-        const simpleStorage = contract(SimpleStorageContract)
-        simpleStorage.setProvider(this.state.web3.currentProvider)
+        const votingContract = contract(VotingContract)
+        votingContract.setProvider(this.state.web3.currentProvider)
         // Get accounts.
-        let simpleStorageInstance;
+        let votingContractInstance;
         this.state.web3.eth.getAccounts((error, accounts) => {
-            simpleStorage.deployed().then((instance) => {
-                simpleStorageInstance = instance
+            votingContract.deployed().then((instance) => {
+                votingContractInstance = instance
                 // Stores a given value, 9 by default.
-                return simpleStorageInstance.set(9, { from: accounts[0] })
+                return votingContractInstance.getAllCandidates.call();
             }).then((result) => {
                 // Get the value from the contract to prove it worked.
-                return simpleStorageInstance.get.call(accounts[0])
-            }).then((result) => {
-                // Update state with the result.
-                return this.setState({ storageValue: result.c[0] })
+                console.log(result);
             })
         })
     }
@@ -54,10 +54,15 @@ class App extends Component {
     render() {
         return (
             <Provider store={storeInstance}>
-                <div className="container">
-                    <Header />
-                    <Candidate />
-                </div>
+                <BrowserRouter>
+                    <div className="container">
+                        <Header />
+                        <Switch>
+                            <Route exact path="/addCandidate" component={AddCandidate} />
+                            <Route exact path="/" component={Candidate} />
+                        </Switch>
+                    </div>
+                </BrowserRouter>
             </Provider>
         );
     }
