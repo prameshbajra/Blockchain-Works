@@ -36,3 +36,17 @@
 > In case of some error in `metamask` or any sort of transaction, `enable / disable` the extension first before changing the code.
 
 **Seed phrase : `celery loud exotic wisdom welcome urban cabbage beyond solar acid tooth priority`**
+
+# How did I deply to Ropsten Testnet?
+
+- Get api key from **Infura**.
+
+- Update the **Truffle.js** file in the project.
+
+- `truffle.cmd compile` and then `truffle.cmd migrate --network ropsten`
+
+<br><br>
+
+## Related Links:
+
+1. **[Ethereum SO - Deploy to ropsten network.](https://ethereum.stackexchange.com/questions/23279/steps-to-deploy-a-contract-using-metamask-and-truffle)**
