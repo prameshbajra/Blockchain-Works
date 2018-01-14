@@ -34,7 +34,9 @@ class Candidate extends Component {
                                     "Loading ..."}
                             </h3>
                             <h6>Some description ta hola ni </h6>
-                            <p><a href="#" className="btn btn-primary" role="button">Button</a> <a href="#" className="btn btn-default" role="button">Button</a></p>
+                            <p>
+                                <a href="#" className="btn btn-primary" role="button">Button</a>
+                            </p>
                         </div>
                     </div>
                 </div>
