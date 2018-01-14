@@ -40,12 +40,22 @@ class AddCandidate extends Component {
     render() {
         return (
             <div className="container" >
-                <form onSubmit={this.onSubmit} className="form">
-                    <input name="candidateName" type="text" className="form-control" />
-                    <button type="submit" className="btn btn-default">
-                        Add
-                    </button>
-                </form>
+                <div className="row">
+                    <div className="col-md-6 col-md-offset-3">
+                        <div className="jumbotron">
+                            <h1 className="text-center">Candidate Entrance</h1>
+                            <br /><br />
+                            <form onSubmit={this.onSubmit} className="form">
+                                <label>Enter the name of the candidate you want to enter.</label>
+                                <input name="candidateName" type="text" className="form-control" />
+                                <br />
+                                <button type="submit" className="btn btn-info btn-block">
+                                    Add Candidate
+                            </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

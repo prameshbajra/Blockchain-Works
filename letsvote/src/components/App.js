@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
-import { Provider } from 'react-redux'
-import store from '../store/store'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import store from '../store/store';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Header from '../components/Header'
-import CandidateList from '../components/CandidateList'
-import AddCandidate from '../components/AddCandidate'
+import Header from '../components/Header';
+import CandidateList from '../components/CandidateList';
+import AddCandidate from '../components/AddCandidate';
+import NotFound from '../components/NotFound';
 
 import '../css/App.css'
 
@@ -21,6 +22,7 @@ class App extends Component {
                         <Switch>
                             <Route exact path="/addCandidate" component={AddCandidate} />
                             <Route exact path="/" component={CandidateList} />
+                            <Route path="*" component={NotFound} />
                         </Switch>
                     </div>
                 </BrowserRouter>
