@@ -16,7 +16,7 @@ const Header = (props) => {
                             <NavLink
                                 exact to="/addCandidate">
                                 Add candidate
-                            </NavLink>
+                                </NavLink>
                         </li>
                     </ul>
                 </div>

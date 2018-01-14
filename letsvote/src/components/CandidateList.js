@@ -51,7 +51,7 @@ class CandidateList extends Component {
             <div>
                 {this.state.allCandidates.map((candidate) => {
                     return (
-                        <div key={Math.random()} className="col-md-3 col-sm-2">
+                        <div key={Math.random()} className="col-md-3 col-sm-6 col-xs-6">
                             <Candidate candidateName={candidate} />
                         </div>
                     )
