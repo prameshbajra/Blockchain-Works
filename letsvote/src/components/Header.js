@@ -12,11 +12,12 @@ const Header = (props) => {
                         </div>
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
-                        <NavLink
-                            exact to="/addCandidate"
-                            className="btn pull-right">
-                            Add candidate
-                        </NavLink>
+                        <li>
+                            <NavLink
+                                exact to="/addCandidate">
+                                Add candidate
+                            </NavLink>
+                        </li>
                     </ul>
                 </div>
             </nav>

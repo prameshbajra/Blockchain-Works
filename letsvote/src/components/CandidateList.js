@@ -9,6 +9,7 @@ class CandidateList extends Component {
         super(props)
         this.state = {
             web3: null,
+            completeWeb3: null,
             allCandidates: []
         }
     }
@@ -16,7 +17,8 @@ class CandidateList extends Component {
     componentWillMount() {
         getWeb3.then(results => {
             this.setState(() => ({
-                web3: results.web3
+                web3: results.web3,
+                completeWeb3: results
             }))
             this.instantiateContract()
         }).catch(() => {
@@ -48,7 +50,11 @@ class CandidateList extends Component {
         return (
             <div>
                 {this.state.allCandidates.map((candidate) => {
-                    return (<Candidate key={Math.random()} candidateName={candidate} />)
+                    return (
+                        <div key={Math.random()} className="col-md-3 col-sm-2">
+                            <Candidate candidateName={candidate} />
+                        </div>
+                    )
                 })}
             </div>
         );

@@ -24,21 +24,16 @@ class Candidate extends Component {
 
     render() {
         return (
-            <div className="row">
-                <div className="col-sm-4 col-md-3">
-                    <div className="thumbnail">
-                        <div className="caption">
-                            <h3>
-                                {this.state.web3 ?
-                                    this.state.web3.toAscii(this.props.candidateName).replace(/\u0000/g, '') :
-                                    "Loading ..."}
-                            </h3>
-                            <h6>Some description ta hola ni </h6>
-                            <p>
-                                <a href="#" className="btn btn-primary" role="button">Button</a>
-                            </p>
-                        </div>
-                    </div>
+            <div className="thumbnail">
+                <div className="caption">
+                    <h4>
+                        {this.state.web3 ?
+                            this.state.web3.toAscii(this.props.candidateName).replace(/\u0000/g, '') :
+                            "Loading ..."}
+                    </h4>
+                    <p>
+                        <a href="#" className="btn btn-info" role="button">Button</a>
+                    </p>
                 </div>
             </div>
         );

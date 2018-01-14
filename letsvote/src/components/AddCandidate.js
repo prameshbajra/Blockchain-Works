@@ -31,8 +31,6 @@ class AddCandidate extends Component {
         this.state.web3.eth.getAccounts((error, accounts) => {
             votingContract.deployed().then((instance) => {
                 votingContractInstance = instance
-                console.log(votingContractInstance);
-                console.log(this.state.web3);
                 return votingContractInstance.setCandidate(newCandidateName, { from: accounts[0] });
             }).then((result) => {
                 this.props.history.push('/');
