@@ -18,11 +18,15 @@ contract Voting {
         return candidateNames;
     }
     
-    function setCandidate(bytes32 newCandidate) isMainAddress public {
+    function setCandidate(bytes32 newCandidate) isMainAddress payable public {
         candidateNames.push(newCandidate);
     }
     
     function setVote(bytes32 candidate) public {
         candidateVotes[candidate] = candidateVotes[candidate] + 1;
+    }
+
+    function getVote(bytes32 candidate) public view returns (uint) {
+        return candidateVotes[candidate];
     }
 }

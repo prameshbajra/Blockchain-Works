@@ -54,6 +54,7 @@ class App extends Component {
     }
 
     render() {
+        console.log(this.props);
         return (
             <Provider store={storeInstance}>
                 <BrowserRouter>

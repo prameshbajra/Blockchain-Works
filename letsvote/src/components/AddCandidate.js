@@ -13,7 +13,7 @@ class AddCandidate extends Component {
     componentWillMount() {
         getWeb3.then(results => {
             this.setState({
-                web3: results.web3
+                web3: results.web3,
             })
         }).catch(() => {
             console.log('Error finding web3.')
@@ -31,9 +31,11 @@ class AddCandidate extends Component {
         this.state.web3.eth.getAccounts((error, accounts) => {
             votingContract.deployed().then((instance) => {
                 votingContractInstance = instance
-                return votingContractInstance.setCandidate(newCandidateName);
+                console.log(votingContractInstance);
+                console.log(this.state.web3);
+                return votingContractInstance.setCandidate(newCandidateName, { from: accounts[0] });
             }).then((result) => {
-                console.log(result);
+                this.props.history.push('/');
             })
         })
     }
