@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 
 import getWeb3 from '../utils/getWeb3';
+import VotingContract from '../../build/contracts/Voting.json'
 
 class Candidate extends Component {
     constructor(props) {
         super(props)
         this.state = {
             web3: null,
-            allCandidates: []
+            allCandidates: [],
+            vote: 0
         }
     }
 
@@ -16,10 +18,45 @@ class Candidate extends Component {
             this.setState(() => ({
                 web3: results.web3
             }))
-            this.instantiateContract()
         }).catch(() => {
             console.log('Error finding web3.')
         })
+    }
+
+    voteHandler = (e) => {
+        const candidateName = this.state.web3.toAscii(this.props.candidateName).replace(/\u0000/g, '');
+        let votingContractInstance;
+        const contract = require('truffle-contract')
+        const votingContract = contract(VotingContract)
+        votingContract.setProvider(this.state.web3.currentProvider)
+        // Get accounts.
+        this.state.web3.eth.getAccounts((error, accounts) => {
+            votingContract.deployed().then((instance) => {
+                votingContractInstance = instance;
+                return votingContractInstance.setVote(candidateName, { from: accounts[0] });
+            }).then((result) => {
+                console.log(result);
+            });
+        });
+    }
+
+    getVote = () => {
+        const candidateName = this.state.web3.toAscii(this.props.candidateName).replace(/\u0000/g, '');
+        let votingContractInstance;
+        const contract = require('truffle-contract')
+        const votingContract = contract(VotingContract)
+        votingContract.setProvider(this.state.web3.currentProvider)
+        // Get accounts.
+        this.state.web3.eth.getAccounts((error, accounts) => {
+            votingContract.deployed().then((instance) => {
+                votingContractInstance = instance;
+                return votingContractInstance.getVote(candidateName);
+            }).then((result) => {
+                this.setState(() => ({
+                    vote: result.c[0]
+                }));
+            });
+        });
     }
 
     render() {
@@ -32,7 +69,8 @@ class Candidate extends Component {
                             "Loading ..."}
                     </h4>
                     <p>
-                        <a href="#" className="btn btn-info" role="button">Button</a>
+                        <button onClick={this.voteHandler} className="btn btn-info" role="button">Vote</button>
+                        <button onClick={this.getVote} className="btn btn-default pull-right">Total : {this.state.vote}</button>
                     </p>
                 </div>
             </div>
