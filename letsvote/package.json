@@ -58,7 +58,8 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
-    "solc": "^0.4.19"
+    "solc": "^0.4.19",
+    "truffle-hdwallet-provider": "0.0.3"
   },
   "scripts": {
     "start": "node scripts/start.js",

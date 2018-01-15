@@ -23,10 +23,21 @@ contract Voting {
     }
     
     function setVote(bytes32 candidate) public {
+        require(validCandidate(candidate));
         candidateVotes[candidate] = candidateVotes[candidate] + 1;
     }
 
     function getVote(bytes32 candidate) public view returns (uint) {
+        require(validCandidate(candidate));
         return candidateVotes[candidate];
+    }
+
+    function validCandidate(bytes32 candidate) view public returns (bool) {
+        for (uint i = 0; i < candidateNames.length; i++) {
+            if (candidateNames[i] == candidate) {
+                return true;
+            }
+        }
+        return false;
     }
 }
