@@ -1,15 +1,11 @@
 pragma solidity ^0.4.18;
 
 contract Voting {
-    uint num;
-    uint anotherNum = 1000;
-    function setValue (uint number) public {
+    bytes32 num;
+    function setValue (bytes32 number) public {
         num = number;
     }
-    function getValue () public view returns (uint) {
+    function getValue () public view returns (bytes32) {
         return num;
-    }
-    function getAnotherValue () view public returns (uint) {
-        return anotherNum;
     }
 }

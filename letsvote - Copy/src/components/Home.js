@@ -22,7 +22,9 @@ class Home extends Component {
         })
     }
 
-    getData = () => {
+    getData = (e) => {
+        e.preventDefault();
+        let inputValue = e.target.inputValue.value;
         let votingContractInstance;
         const contract = require('truffle-contract')
         const votingContract = contract(VotingContract)
@@ -31,18 +33,19 @@ class Home extends Component {
         this.state.web3.eth.getAccounts((error, accounts) => {
             votingContract.deployed().then((instance) => {
                 votingContractInstance = instance;
-                return votingContractInstance.setValue(100, { from: accounts[0], gas: 333333 });
+                return votingContractInstance.setValue(inputValue, { from: accounts[0], gas: 303030 });
             }).then((result) => {
-                console.log(result);
+                console.log("result", result);
                 return votingContractInstance.getValue();
             }).then((finalResult) => {
+                console.log("finalResult", finalResult);
                 this.setState(() => {
                     return {
-                        data: finalResult.c[0]
+                        data: this.state.web3.toAscii(finalResult).replace(/\u0000/g, '')
                     }
                 })
             }).catch((error) => {
-                console.log(error);
+                console.error(error);
             })
         });
     }
@@ -50,9 +53,10 @@ class Home extends Component {
     render() {
         return (
             <div className="thumbnail">
-                <div className="caption">
-                    <button onClick={() => { this.getData() }}>Getting</button>
-                </div>
+                <form onSubmit={this.getData}>
+                    <input type="text" name="inputValue" />
+                    <button type="submit">Submit button</button>
+                </form>
                 <h1>{this.state.data}</h1>
             </div>
         );
