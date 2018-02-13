@@ -8,7 +8,8 @@ class Home extends Component {
         super(props)
         this.state = {
             web3: null,
-            data: undefined
+            dataOne: undefined,
+            dataTwo: undefined
         }
     }
 
@@ -41,7 +42,8 @@ class Home extends Component {
                 console.log("finalResult", finalResult);
                 this.setState(() => {
                     return {
-                        data: this.state.web3.toAscii(finalResult).replace(/\u0000/g, '')
+                        dataOne: this.state.web3.toAscii(finalResult[0]).replace(/\u0000/g, ''),
+                        dataTwo: finalResult[1].c
                     }
                 })
             }).catch((error) => {
@@ -57,7 +59,8 @@ class Home extends Component {
                     <input type="text" name="inputValue" />
                     <button type="submit">Submit button</button>
                 </form>
-                <h1>{this.state.data}</h1>
+                <h1>{this.state.dataOne}</h1>
+                <h1>{this.state.dataTwo}</h1>
             </div>
         );
     }

@@ -9,6 +9,10 @@
         {
           "name": "",
           "type": "bytes32"
+        },
+        {
+          "name": "",
+          "type": "uint256"
         }
       ],
       "payable": false,
@@ -88,18 +92,18 @@
       "type": "constructor"
     }
   ],
-  "bytecode": "0x6060604052341561000f57600080fd5b60e38061001d6000396000f3006060604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680632096525514604e57806358825b1014607c575b600080fd5b3415605857600080fd5b605e60a0565b60405180826000191660001916815260200191505060405180910390f35b3415608657600080fd5b609e60048080356000191690602001909190505060a9565b005b60008054905090565b8060008160001916905550505600a165627a7a723058206af172adf55c6a2c738546b4b0e2b0cdae44abdd1b0a1ca95eb6b5e9266f720c0029",
-  "deployedBytecode": "0x6060604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680632096525514604e57806358825b1014607c575b600080fd5b3415605857600080fd5b605e60a0565b60405180826000191660001916815260200191505060405180910390f35b3415608657600080fd5b609e60048080356000191690602001909190505060a9565b005b60008054905090565b8060008160001916905550505600a165627a7a723058206af172adf55c6a2c738546b4b0e2b0cdae44abdd1b0a1ca95eb6b5e9266f720c0029",
-  "sourceMap": "26:195:0:-;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "26:195:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;141:78;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;65:71;;;;;;;;;;;;;;;;;;;;;;;;;;;;;141:78;183:7;209:3;;202:10;;141:78;:::o;65:71::-;123:6;117:3;:12;;;;;;;65:71;:::o",
-  "source": "pragma solidity ^0.4.18;\n\ncontract Voting {\n    bytes32 num;\n    function setValue (bytes32 number) public {\n        num = number;\n    }\n    function getValue () public view returns (bytes32) {\n        return num;\n    }\n}",
+  "bytecode": "0x6060604052341561000f57600080fd5b60f48061001d6000396000f3006060604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680632096525514604e57806358825b10146083575b600080fd5b3415605857600080fd5b605e60a7565b6040518083600019166000191681526020018281526020019250505060405180910390f35b3415608d57600080fd5b60a560048080356000191690602001909190505060ba565b005b6000806000546064809050915091509091565b8060008160001916905550505600a165627a7a7230582031d5b3e53d008ac0476548208fd22d1beeee6e333efe254e81a695c49a2c6cdc0029",
+  "deployedBytecode": "0x6060604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680632096525514604e57806358825b10146083575b600080fd5b3415605857600080fd5b605e60a7565b6040518083600019166000191681526020018281526020019250505060405180910390f35b3415608d57600080fd5b60a560048080356000191690602001909190505060ba565b005b6000806000546064809050915091509091565b8060008160001916905550505600a165627a7a7230582031d5b3e53d008ac0476548208fd22d1beeee6e333efe254e81a695c49a2c6cdc0029",
+  "sourceMap": "26:207:0:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "26:207:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;142:89;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;66:70;;;;;;;;;;;;;;;;;;;;;;;;;;;;;142:89;182:7;191:4;215:3;;220;207:17;;;;;;;142:89;;:::o;66:70::-;123:6;117:3;:12;;;;;;;66:70;:::o",
+  "source": "pragma solidity ^0.4.18;\n\ncontract Voting {\n    bytes32 num;\n\n    function setValue(bytes32 number) public {\n        num = number;\n    }\n\n    function getValue() public view returns(bytes32, uint) {\n        return (num, 100);\n    }\n}",
   "sourcePath": "F:\\Programming\\BlockChain Works\\letsvote - Copy\\contracts\\Voting.sol",
   "ast": {
     "attributes": {
       "absolutePath": "/F/Programming/BlockChain Works/letsvote - Copy/contracts/Voting.sol",
       "exportedSymbols": {
         "Voting": [
-          22
+          26
         ]
       }
     },
@@ -129,17 +133,17 @@
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            22
+            26
           ],
           "name": "Voting",
-          "scope": 23
+          "scope": 27
         },
         "children": [
           {
             "attributes": {
               "constant": false,
               "name": "num",
-              "scope": 22,
+              "scope": 26,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "bytes32",
@@ -255,7 +259,7 @@
             "attributes": {
               "constant": false,
               "name": "setValue",
-              "scope": 22,
+              "scope": 26,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -417,13 +421,13 @@
             ],
             "id": 13,
             "name": "FunctionDefinition",
-            "src": "65:71:0"
+            "src": "66:70:0"
           },
           {
             "attributes": {
               "constant": true,
               "name": "getValue",
-              "scope": 22,
+              "scope": 26,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(bytes32 => uint256)",
@@ -494,7 +498,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 21,
+                      "scope": 25,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -510,7 +514,7 @@
                         },
                         "id": 15,
                         "name": "ElementaryTypeName",
-                        "src": "183:7:0",
+                        "src": "182:7:0",
                         "children": [
                           {
                             "attributes": {
@@ -526,12 +530,38 @@
                     ],
                     "id": 16,
                     "name": "VariableDeclaration",
-                    "src": "183:7:0"
+                    "src": "182:7:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 25,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 17,
+                        "name": "ElementaryTypeName",
+                        "src": "191:4:0"
+                      }
+                    ],
+                    "id": 18,
+                    "name": "VariableDeclaration",
+                    "src": "191:4:0"
                   }
                 ],
-                "id": 17,
+                "id": 19,
                 "name": "ParameterList",
-                "src": "182:9:0",
+                "src": "181:15:0",
                 "attributes": {
                   "parameters": [
                     null
@@ -542,7 +572,7 @@
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 17
+                      "functionReturnParameters": 19
                     },
                     "children": [
                       {
@@ -552,17 +582,18 @@
                             null
                           ],
                           "referencedDeclaration": 3,
-                          "type": "bytes32",
+                          "type": "tuple(bytes32,int_const 100)",
                           "value": "num",
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
-                          "operator": "="
+                          "operator": "=",
+                          "isInlineArray": false
                         },
-                        "id": 18,
-                        "name": "Identifier",
-                        "src": "209:3:0",
+                        "id": 22,
+                        "name": "TupleExpression",
+                        "src": "214:10:0",
                         "children": [
                           {
                             "attributes": {
@@ -571,12 +602,12 @@
                                 null
                               ],
                               "referencedDeclaration": 3,
-                              "type": "uint256",
+                              "type": "bytes32",
                               "value": "num"
                             },
-                            "id": 11,
+                            "id": 20,
                             "name": "Identifier",
-                            "src": "139:3:0"
+                            "src": "215:3:0"
                           },
                           {
                             "attributes": {
@@ -585,29 +616,36 @@
                                 null
                               ],
                               "referencedDeclaration": 8,
-                              "type": "uint256",
-                              "value": "number"
+                              "type": "int_const 100",
+                              "value": "100",
+                              "hexvalue": "313030",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number"
                             },
-                            "id": 12,
-                            "name": "Identifier",
-                            "src": "145:6:0"
+                            "id": 21,
+                            "name": "Literal",
+                            "src": "220:3:0"
                           }
                         ]
                       }
                     ],
-                    "id": 19,
+                    "id": 23,
                     "name": "Return",
-                    "src": "202:10:0"
+                    "src": "207:17:0"
                   }
                 ],
-                "id": 20,
+                "id": 24,
                 "name": "Block",
-                "src": "192:27:0"
+                "src": "197:34:0"
               }
             ],
-            "id": 21,
+            "id": 25,
             "name": "FunctionDefinition",
-            "src": "141:78:0"
+            "src": "142:89:0"
           },
           {
             "attributes": {
@@ -2726,14 +2764,14 @@
             "src": "896:261:1"
           }
         ],
-        "id": 22,
+        "id": 26,
         "name": "ContractDefinition",
-        "src": "26:195:0"
+        "src": "26:207:0"
       }
     ],
-    "id": 23,
+    "id": 27,
     "name": "SourceUnit",
-    "src": "0:221:0"
+    "src": "0:233:0"
   },
   "compiler": {
     "name": "solc",
@@ -2748,9 +2786,9 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xb49b5f5e28d4005bab0e4debf89ecbc4fdccd41b"
+      "address": "0x7d766e8490819e8e401baea221fd6d01b7e8b62a"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-02-12T08:39:23.753Z"
+  "updatedAt": "2018-02-13T09:50:29.392Z"
 }
