@@ -36,10 +36,8 @@ class Home extends Component {
                 votingContractInstance = instance;
                 return votingContractInstance.setValue(inputValue, { from: accounts[0], gas: 303030 });
             }).then((result) => {
-                console.log("result", result);
                 return votingContractInstance.getValue();
             }).then((finalResult) => {
-                console.log("finalResult", finalResult);
                 this.setState(() => {
                     return {
                         dataOne: this.state.web3.toAscii(finalResult[0]).replace(/\u0000/g, ''),
