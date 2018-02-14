@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Candidate from './Candidate';
+
 import getWeb3 from '../utils/getWeb3';
 import VotingContract from '../../build/contracts/Voting.json'
 
@@ -52,13 +54,14 @@ class Home extends Component {
 
     render() {
         return (
-            <div className="thumbnail">
+            <div>
                 <form onSubmit={this.getData}>
                     <input type="text" name="inputValue" />
                     <button type="submit">Submit button</button>
                 </form>
                 <h1>{this.state.dataOne}</h1>
                 <h1>{this.state.dataTwo}</h1>
+                <Candidate />
             </div>
         );
     }
