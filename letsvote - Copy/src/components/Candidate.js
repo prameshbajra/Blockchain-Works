@@ -7,7 +7,8 @@ class Candidate extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            web3: null
+            web3: null,
+            error: undefined
         }
     }
     componentWillMount() {
@@ -44,10 +45,12 @@ class Candidate extends Component {
                 console.log("result", result)
                 return candidateContractInstance.getAllAddresses();
             }).then((finalResult) => {
+                this.setState(() => ({ error: undefined }))
                 console.log("finalResult", finalResult);
             }).catch((error) => {
-                console.error(error);
-                console.log("Aarko account parryo vaney you aaunxa hola !!");
+                this.setState(() => ({
+                    error: "Sorry, you cannot enter as a candidate. You do not have permission to do so. "
+                }))
             })
         });
     }
@@ -65,6 +68,7 @@ class Candidate extends Component {
                     <input type="text" name="age" />
                     <button type="submit">Submit</button>
                 </form>
+                {this.state.error}
             </div>
         );
     }

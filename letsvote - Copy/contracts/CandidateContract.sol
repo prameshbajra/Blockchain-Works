@@ -11,7 +11,6 @@ contract CandidateContract {
     
     address owner;
     mapping (address => Candidate) public candidates;
-    address[] public candidatesAddress;
     
     modifier isOwner {
         require(msg.sender == owner);
@@ -35,7 +34,6 @@ contract CandidateContract {
         candidatesObject.lastName = _lastName;
         candidatesObject.location = _location;
         candidatesObject.age = _age;
-        candidatesAddress.push(msg.sender);
     }
     
     function getCandidateDetails(address _addressForCandidate) 
@@ -53,9 +51,4 @@ contract CandidateContract {
                 addr.age
             );
         }
-    
-    function getAllAddresses () isOwner public view returns (address[]) {
-        return candidatesAddress;
-    }
-    
 }
