@@ -1,18 +1,31 @@
 pragma solidity ^0.4.18;
 
 contract Voting {
-    bytes32 num;
-
-    event SettedValue (
-        bytes32 num
-    );
-
-    function setValue(bytes32 number) public {
-        num = number;
-        SettedValue(num);
+    address owner;
+    bytes32 public nameOfVoting;
+    bytes32 public startDate;
+    bytes32 public endDate;
+    
+    modifier isOwner() {
+        require(msg.sender == owner);
+        _;
     }
-
-    function getValue() public view returns(bytes32, uint) {
-        return (num, 100);
+    
+    function Voting () public {
+        owner = msg.sender;
     }
+    
+    function setVotingName (bytes32 _nameOfVoting) isOwner public {
+        nameOfVoting = _nameOfVoting;
+    }   
+
+    // Timer functions ...
+    function setStartDate (bytes32 _startDate) isOwner public {
+        startDate = _startDate;
+    }  
+ 
+    function setEndDate (bytes32 _endDate) isOwner public {
+        endDate = _endDate;
+    }
+   
 }
