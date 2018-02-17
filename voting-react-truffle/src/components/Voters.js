@@ -7,7 +7,9 @@ class Voters extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            web3: null
+            web3: null,
+            visibleDetails: true,
+            id: null
         }
     }
     componentWillMount() {
@@ -19,7 +21,7 @@ class Voters extends Component {
             console.log('Error finding web3.')
         })
     }
-    formHandler = (e) => {
+    setVotersIdFormHandler = (e) => {
         e.preventDefault();
         const id = e.target.id.value;
         let votersContractInstance;
@@ -33,6 +35,28 @@ class Voters extends Component {
                 return votersContractInstance.setVoterId(id, { from: accounts[0] });
             }).then((result) => {
                 console.log("result", result);
+                this.setState(() => ({ visibleDetails: false }));
+            }).catch((error) => {
+                console.error("error", error)
+            })
+        })
+    }
+    setVotersDetailsFormHandler = (e) => {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const dateOfBirth = e.target.dateOfBirth.value;
+        console.log(name, dateOfBirth);
+        let votersContractInstance;
+        const contract = require('truffle-contract');
+        const votersContract = contract(VotersContract);
+        votersContract.setProvider(this.state.web3.currentProvider);
+        // Get accounts.
+        this.state.web3.eth.getAccounts((error, accounts) => {
+            votersContract.deployed().then((instance) => {
+                votersContractInstance = instance
+                return votersContractInstance.setVoterDetails(name, dateOfBirth, false, { from: accounts[0] });
+            }).then((result) => {
+                console.log("result", result);
             }).catch((error) => {
                 console.error("error", error)
             })
@@ -44,10 +68,21 @@ class Voters extends Component {
                 Voters Registration
                 <br />
                 You Have to enter your ID for verification.
-                <form onSubmit={this.formHandler}>
+                <form onSubmit={this.setVotersIdFormHandler}>
                     <input type="text" name="id" />
                     <button type="submit">Submit</button>
                 </form>
+                {
+                    this.state.visibleDetails ?
+                        (<h1>Please enter your ID to Continue</h1>) :
+                        (
+                            <form onSubmit={this.setVotersDetailsFormHandler}>
+                                <input type="text" name="name" />
+                                <input type="text" name="dateOfBirth" />
+                                <button type="submit">Submit</button>
+                            </form>
+                        )
+                }
             </div>
         );
     }
