@@ -9,7 +9,7 @@ contract VotersContract {
         bool voted;
     }
     
-    mapping (uint => VoterDetails) voters;
+    mapping (uint => VoterDetails) public voters;
     
     function setVoterId (uint _voterId) public {
         voterId = _voterId;

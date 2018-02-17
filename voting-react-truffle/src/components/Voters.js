@@ -35,7 +35,7 @@ class Voters extends Component {
                 return votersContractInstance.setVoterId(id, { from: accounts[0] });
             }).then((result) => {
                 console.log("result", result);
-                this.setState(() => ({ visibleDetails: false }));
+                this.setState(() => ({ id: id, visibleDetails: false }));
             }).catch((error) => {
                 console.error("error", error)
             })
@@ -57,6 +57,9 @@ class Voters extends Component {
                 return votersContractInstance.setVoterDetails(name, dateOfBirth, false, { from: accounts[0] });
             }).then((result) => {
                 console.log("result", result);
+                return votersContractInstance.voters.call(this.state.id);
+            }).then((votersDesc) => {
+                console.log("Voters Desc", votersDesc);
             }).catch((error) => {
                 console.error("error", error)
             })
