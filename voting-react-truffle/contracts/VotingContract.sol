@@ -11,7 +11,7 @@ contract VotingContract {
         _;
     }
     
-    function Voting () public {
+    function VotingContract () public {
         owner = msg.sender;
     }
     
