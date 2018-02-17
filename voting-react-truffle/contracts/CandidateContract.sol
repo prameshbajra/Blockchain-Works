@@ -1,6 +1,6 @@
 pragma solidity ^0.4.18;
 
-contract Candidate {
+contract CandidateContract {
     uint candidateId;
     
     struct CandidateDetails {

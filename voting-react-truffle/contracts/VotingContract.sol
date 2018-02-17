@@ -1,6 +1,6 @@
 pragma solidity ^0.4.18;
 
-contract Voting {
+contract VotingContract {
     address owner;
     bytes32 public nameOfVoting;
     bytes32 public startDate;
