@@ -47,7 +47,6 @@ class Voters extends Component {
         e.preventDefault();
         const name = e.target.name.value;
         const dateOfBirth = e.target.dateOfBirth.value;
-        console.log(name, dateOfBirth);
         let votersContractInstance;
         const contract = require('truffle-contract');
         const votersContract = contract(VotersContract);
@@ -58,15 +57,13 @@ class Voters extends Component {
                 votersContractInstance = instance
                 return votersContractInstance.setVoterDetails(name, dateOfBirth, false, { from: accounts[0] });
             }).then((result) => {
-                console.log("result", result);
                 return votersContractInstance.voters.call(this.state.id);
             }).then((votersDesc) => {
                 const name = votersDesc[0];
                 const dateOfBirth = votersDesc[1];
-                console.log(votersDesc);
                 this.setState(() => ({ name, dateOfBirth, visibleDetails: true }))
             }).catch((error) => {
-                console.error("error", error)
+                console.error("error", error);
             })
         })
     }

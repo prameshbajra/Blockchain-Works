@@ -15,13 +15,18 @@ contract CandidateContract {
     function setCandidateId (uint _candidateId) public {
         candidateId = _candidateId;
     }
+
+    function getcandidateId () public view returns (uint id) {
+        return candidateId;
+    }
     
     function setCandidateDetails (
         bytes32 _name,
         bytes32 _dateOfBirth,
         bytes32 _standFor,
         uint _votesCount
-    ) public {
+    ) public 
+    {
         var candidateObject = candidates[candidateId];
         candidateObject.name = _name;
         candidateObject.dateOfBirth = _dateOfBirth;
