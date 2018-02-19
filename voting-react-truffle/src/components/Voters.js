@@ -9,7 +9,9 @@ class Voters extends Component {
         this.state = {
             web3: null,
             visibleDetails: true,
-            id: null
+            id: null,
+            name: null,
+            dateOfBirth: null,
         }
     }
     componentWillMount() {
@@ -59,7 +61,10 @@ class Voters extends Component {
                 console.log("result", result);
                 return votersContractInstance.voters.call(this.state.id);
             }).then((votersDesc) => {
-                console.log("Voters Desc", votersDesc);
+                const name = votersDesc[0];
+                const dateOfBirth = votersDesc[1];
+                console.log(votersDesc);
+                this.setState(() => ({ name, dateOfBirth, visibleDetails: true }))
             }).catch((error) => {
                 console.error("error", error)
             })
@@ -85,6 +90,14 @@ class Voters extends Component {
                                 <button type="submit">Submit</button>
                             </form>
                         )
+                }
+                {
+                    this.state.name ?
+                        <h3>
+                            {this.state.web3.toAscii(this.state.name).replace(/\u0000/g, '')} born on
+                            {this.state.web3.toAscii(this.state.dateOfBirth).replace(/\u0000/g, '')}
+                            with id {this.state.id} has been registered successfully.
+                        </h3> : null
                 }
             </div>
         );
