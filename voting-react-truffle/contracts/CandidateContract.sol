@@ -10,7 +10,7 @@ contract CandidateContract {
         uint votesCount;
     }
     
-    mapping (uint => CandidateDetails) candidates;
+    mapping (uint => CandidateDetails) public candidates;
     
     function setCandidateId (uint _candidateId) public {
         candidateId = _candidateId;

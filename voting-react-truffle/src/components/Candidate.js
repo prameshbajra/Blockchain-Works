@@ -34,16 +34,15 @@ class Candidate extends Component {
         // Get accounts.
         this.state.web3.eth.getAccounts((error, accounts) => {
             candidateContract.deployed().then((instance) => {
-                candidateContractInstance = instance
-                return candidateContractInstance.setCandidateId(id, { from: accounts[0] });
+                candidateContractInstance = instance;
+                // eslint-disable-next-line
+                this.state.web3.eth.defaultAccount = accounts[0];
+                return candidateContractInstance.setCandidateId(id, { from: accounts[0], gas: 303030 });
             }).then((result) => {
                 console.log("result", result);
-                return candidateContractInstance.getCandidateId.call()
-            }).then((candidateId) => {
-                console.log("candidateId", candidateId);
-                this.setState(() => ({ id: candidateId, visibleDetails: false }))
+                this.setState(() => ({ id: id, visibleDetails: false }))
             }).catch((error) => {
-                console.error("error", error);
+                console.error(error);
             });
         });
     }
@@ -59,12 +58,13 @@ class Candidate extends Component {
         // Get accounts.
         this.state.web3.eth.getAccounts((error, accounts) => {
             candidateContract.deployed().then((instance) => {
-                candidateContractInstance = instance
-                return candidateContractInstance.setCandidateDetails(name, dateOfBirth, standFor, { from: accounts[0] });
+                candidateContractInstance = instance;
+                return candidateContractInstance.setCandidateDetails(name, dateOfBirth, standFor, 0, { from: accounts[0] });
             }).then((result) => {
                 console.log(result);
-                return candidateContractInstance.getCandidateDetails.call(this.state.id);
+                return candidateContractInstance.candidates.call(this.state.id);
             }).then((candidateDetails) => {
+                console.log("candidateDetails", candidateDetails);
                 const name = candidateDetails[0];
                 const dateOfBirth = candidateDetails[1];
                 const standFor = candidateDetails[2];
