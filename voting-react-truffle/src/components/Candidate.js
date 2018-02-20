@@ -37,7 +37,7 @@ class Candidate extends Component {
                 candidateContractInstance = instance;
                 // eslint-disable-next-line
                 this.state.web3.eth.defaultAccount = accounts[0];
-                return candidateContractInstance.setCandidateId(id, { from: accounts[0], gas: 303030 });
+                return candidateContractInstance.candidateIdSetter(id, { from: accounts[0], gas: 303030 });
             }).then((result) => {
                 console.log("result", result);
                 this.setState(() => ({ id: id, visibleDetails: false }))
@@ -61,7 +61,7 @@ class Candidate extends Component {
                 candidateContractInstance = instance;
                 return candidateContractInstance.setCandidateDetails(name, dateOfBirth, standFor, 0, { from: accounts[0] });
             }).then((result) => {
-                console.log(result);
+                console.log("result", result);
                 return candidateContractInstance.candidates.call(this.state.id);
             }).then((candidateDetails) => {
                 console.log("candidateDetails", candidateDetails);

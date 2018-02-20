@@ -126,7 +126,7 @@
           "type": "uint256"
         }
       ],
-      "name": "setCandidateId",
+      "name": "idSetCandidate",
       "outputs": [
         {
           "name": "",
@@ -164,24 +164,32 @@
       "type": "function"
     },
     {
-      "inputs": [],
+      "inputs": [
+        {
+          "name": "_candidateId",
+          "type": "uint256"
+        }
+      ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "constructor"
+      "type": "function",
+      "constant": false,
+      "name": "candidateIdSetter",
+      "outputs": []
     }
   ],
-  "bytecode": "0x6060604052341561000f57600080fd5b6102cf8061001e6000396000f30060606040526004361061006d576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063031078701461007257806327f9fd501461009b5780633477ee2e146100ff5780633982da0214610163578063a1c6376914610186575b600080fd5b341561007d57600080fd5b6100856101d0565b6040518082815260200191505060405180910390f35b34156100a657600080fd5b6100bc60048080359060200190919050506101d9565b6040518085600019166000191681526020018460001916600019168152602001836000191660001916815260200182815260200194505050505060405180910390f35b341561010a57600080fd5b610120600480803590602001909190505061021a565b6040518085600019166000191681526020018460001916600019168152602001836000191660001916815260200182815260200194505050505060405180910390f35b341561016e57600080fd5b610184600480803590602001909190505061024a565b005b341561019157600080fd5b6101ce6004808035600019169060200190919080356000191690602001909190803560001916906020019091908035906020019091905050610254565b005b60008054905090565b600080600080600060016000878152602001908152602001600020905080600001548160010154826002015483600301549450945094509450509193509193565b60016020528060005260406000206000915090508060000154908060010154908060020154908060030154905084565b8060008190555050565b60006001600080548152602001908152602001600020905084816000018160001916905550838160010181600019169055508281600201816000191690555081816003018190555050505050505600a165627a7a723058205634ed18628d787ab94aba48cdbcaea5f7beebdc4dc06112e1062e4a70d93dcb0029",
-  "deployedBytecode": "0x60606040526004361061006d576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063031078701461007257806327f9fd501461009b5780633477ee2e146100ff5780633982da0214610163578063a1c6376914610186575b600080fd5b341561007d57600080fd5b6100856101d0565b6040518082815260200191505060405180910390f35b34156100a657600080fd5b6100bc60048080359060200190919050506101d9565b6040518085600019166000191681526020018460001916600019168152602001836000191660001916815260200182815260200194505050505060405180910390f35b341561010a57600080fd5b610120600480803590602001909190505061021a565b6040518085600019166000191681526020018460001916600019168152602001836000191660001916815260200182815260200194505050505060405180910390f35b341561016e57600080fd5b610184600480803590602001909190505061024a565b005b341561019157600080fd5b6101ce6004808035600019169060200190919080356000191690602001909190803560001916906020019091908035906020019091905050610254565b005b60008054905090565b600080600080600060016000878152602001908152602001600020905080600001548160010154826002015483600301549450945094509450509193509193565b60016020528060005260406000206000915090508060000154908060010154908060020154908060030154905084565b8060008190555050565b60006001600080548152602001908152602001600020905084816000018160001916905550838160010181600019169055508281600201816000191690555081816003018190555050505050505600a165627a7a723058205634ed18628d787ab94aba48cdbcaea5f7beebdc4dc06112e1062e4a70d93dcb0029",
-  "sourceMap": "26:1267:0:-;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "26:1267:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;392:92;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;906:385;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;229:52;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;292:94;;;;;;;;;;;;;;;;;;;;;;;;;;494:402;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;392:92;440:7;466:11;;459:18;;392:92;:::o;906:385::-;985:7;1002;1019;1036:4;1058:19;1080:10;:24;1091:12;1080:24;;;;;;;;;;;1058:46;;1135:15;:20;;;1169:15;:27;;;1210:15;:24;;;1248:15;:26;;;1114:170;;;;;;;;906:385;;;;;;:::o;229:52::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;292:94::-;367:12;353:11;:26;;;;292:94;:::o;494:402::-;658:19;680:10;:23;691:11;;680:23;;;;;;;;;;;658:45;;736:5;713:15;:20;;:28;;;;;;;781:12;751:15;:27;;:42;;;;;;;830:9;803:15;:24;;:36;;;;;;;878:11;849:15;:26;;:40;;;;494:402;;;;;:::o",
-  "source": "pragma solidity ^0.4.18;\n\ncontract CandidateContract {\n    uint candidateId;\n    \n    struct CandidateDetails {\n        bytes32 name;\n        bytes32 dateOfBirth;\n        bytes32 standFor;\n        uint votesCount;\n    }\n    \n    mapping (uint => CandidateDetails) public candidates;\n    \n    function setCandidateId (uint _candidateId) public {\n        candidateId = _candidateId;\n    }\n\n    function getcandidateId () public view returns (uint id) {\n        return candidateId;\n    }\n    \n    function setCandidateDetails (\n        bytes32 _name,\n        bytes32 _dateOfBirth,\n        bytes32 _standFor,\n        uint _votesCount\n    ) public \n    {\n        var candidateObject = candidates[candidateId];\n        candidateObject.name = _name;\n        candidateObject.dateOfBirth = _dateOfBirth;\n        candidateObject.standFor = _standFor;\n        candidateObject.votesCount = _votesCount;\n    }\n    \n    function getCandidateDetails (uint _candidateId) public view returns (\n        bytes32,\n        bytes32,\n        bytes32,\n        uint \n    ) {\n        var candidateObject = candidates[_candidateId];\n        return (\n            candidateObject.name,\n            candidateObject.dateOfBirth,\n            candidateObject.standFor,\n            candidateObject.votesCount\n        );\n    }\n}\n\n",
-  "sourcePath": "F:\\Programming\\BlockChain Works\\voting-react-truffle\\contracts\\CandidateContract.sol",
+  "bytecode": "0x6060604052341561000f57600080fd5b6103078061001e6000396000f300606060405260043610610078576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063031078701461007d57806327f9fd50146100a65780633477ee2e1461010a5780635f94358b1461016e578063a1c6376914610191578063a556c31a146101db575b600080fd5b341561008857600080fd5b6100906101fe565b6040518082815260200191505060405180910390f35b34156100b157600080fd5b6100c76004808035906020019091905050610207565b6040518085600019166000191681526020018460001916600019168152602001836000191660001916815260200182815260200194505050505060405180910390f35b341561011557600080fd5b61012b6004808035906020019091905050610248565b6040518085600019166000191681526020018460001916600019168152602001836000191660001916815260200182815260200194505050505060405180910390f35b341561017957600080fd5b61018f6004808035906020019091905050610278565b005b341561019c57600080fd5b6101d96004808035600019169060200190919080356000191690602001909190803560001916906020019091908035906020019091905050610282565b005b34156101e657600080fd5b6101fc60048080359060200190919050506102d1565b005b60008054905090565b600080600080600060016000878152602001908152602001600020905080600001548160010154826002015483600301549450945094509450509193509193565b60016020528060005260406000206000915090508060000154908060010154908060020154908060030154905084565b8060008190555050565b6000600160008054815260200190815260200160002090508481600001816000191690555083816001018160001916905550828160020181600019169055508181600301819055505050505050565b80600081905550505600a165627a7a7230582038b75554a1151419b19b8398dec8e439fde83516945d719cdcca42aaf77c67e60029",
+  "deployedBytecode": "0x606060405260043610610078576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063031078701461007d57806327f9fd50146100a65780633477ee2e1461010a5780635f94358b1461016e578063a1c6376914610191578063a556c31a146101db575b600080fd5b341561008857600080fd5b6100906101fe565b6040518082815260200191505060405180910390f35b34156100b157600080fd5b6100c76004808035906020019091905050610207565b6040518085600019166000191681526020018460001916600019168152602001836000191660001916815260200182815260200194505050505060405180910390f35b341561011557600080fd5b61012b6004808035906020019091905050610248565b6040518085600019166000191681526020018460001916600019168152602001836000191660001916815260200182815260200194505050505060405180910390f35b341561017957600080fd5b61018f6004808035906020019091905050610278565b005b341561019c57600080fd5b6101d96004808035600019169060200190919080356000191690602001909190803560001916906020019091908035906020019091905050610282565b005b34156101e657600080fd5b6101fc60048080359060200190919050506102d1565b005b60008054905090565b600080600080600060016000878152602001908152602001600020905080600001548160010154826002015483600301549450945094509450509193509193565b60016020528060005260406000206000915090508060000154908060010154908060020154908060030154905084565b8060008190555050565b6000600160008054815260200190815260200160002090508481600001816000191690555083816001018160001916905550828160020181600019169055508181600301819055505050505050565b80600081905550505600a165627a7a7230582038b75554a1151419b19b8398dec8e439fde83516945d719cdcca42aaf77c67e60029",
+  "sourceMap": "28:1422:0:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "28:1422:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;517:94;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1049:398;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;241:52;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;306:96;;;;;;;;;;;;;;;;;;;;;;;;;;623:414;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;410:99;;;;;;;;;;;;;;;;;;;;;;;;;;517:94;565:7;592:11;;585:18;;517:94;:::o;1049:398::-;1129:7;1147;1165;1183:4;1207:19;1229:10;:24;1240:12;1229:24;;;;;;;;;;;1207:46;;1286:15;:20;;;1321:15;:27;;;1363:15;:24;;;1402:15;:26;;;1264:175;;;;;;;;1049:398;;;;;;:::o;241:52::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;306:96::-;382:12;368:11;:26;;;;306:96;:::o;623:414::-;794:19;816:10;:23;827:11;;816:23;;;;;;;;;;;794:45;;873:5;850:15;:20;;:28;;;;;;;919:12;889:15;:27;;:42;;;;;;;969:9;942:15;:24;;:36;;;;;;;1018:11;989:15;:26;;:40;;;;623:414;;;;;:::o;410:99::-;489:12;475:11;:26;;;;410:99;:::o",
+  "source": "pragma solidity ^0.4.18;\r\n\r\ncontract CandidateContract {\r\n    uint candidateId;\r\n    \r\n    struct CandidateDetails {\r\n        bytes32 name;\r\n        bytes32 dateOfBirth;\r\n        bytes32 standFor;\r\n        uint votesCount;\r\n    }\r\n    \r\n    mapping (uint => CandidateDetails) public candidates;\r\n    \r\n    function idSetCandidate (uint _candidateId) public {\r\n        candidateId = _candidateId;\r\n    }\r\n\r\n    function candidateIdSetter (uint _candidateId) public {\r\n        candidateId = _candidateId;\r\n    }\r\n\r\n    function getcandidateId () public view returns (uint id) {\r\n        return candidateId;\r\n    }\r\n    \r\n    function setCandidateDetails (\r\n        bytes32 _name,\r\n        bytes32 _dateOfBirth,\r\n        bytes32 _standFor,\r\n        uint _votesCount\r\n    ) public \r\n    {\r\n        var candidateObject = candidates[candidateId];\r\n        candidateObject.name = _name;\r\n        candidateObject.dateOfBirth = _dateOfBirth;\r\n        candidateObject.standFor = _standFor;\r\n        candidateObject.votesCount = _votesCount;\r\n    }\r\n    \r\n    function getCandidateDetails (uint _candidateId) public view returns (\r\n        bytes32,\r\n        bytes32,\r\n        bytes32,\r\n        uint \r\n    ) {\r\n        var candidateObject = candidates[_candidateId];\r\n        return (\r\n            candidateObject.name,\r\n            candidateObject.dateOfBirth,\r\n            candidateObject.standFor,\r\n            candidateObject.votesCount\r\n        );\r\n    }\r\n}\r\n\r\n",
+  "sourcePath": "F:\\Programming\\Demo-Blockchain\\voting-react-truffle\\contracts\\CandidateContract.sol",
   "ast": {
     "attributes": {
-      "absolutePath": "/F/Programming/BlockChain Works/voting-react-truffle/contracts/CandidateContract.sol",
+      "absolutePath": "/F/Programming/Demo-Blockchain/voting-react-truffle/contracts/CandidateContract.sol",
       "exportedSymbols": {
         "CandidateContract": [
-          105
+          115
         ]
       }
     },
@@ -211,17 +219,17 @@
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            105
+            115
           ],
           "name": "CandidateContract",
-          "scope": 106
+          "scope": 116
         },
         "children": [
           {
             "attributes": {
               "canonicalName": "CandidateContract.Candidate",
               "name": "candidateId",
-              "scope": 105,
+              "scope": 115,
               "visibility": "internal",
               "constant": false,
               "stateVariable": true,
@@ -254,7 +262,7 @@
                 ],
                 "id": 2,
                 "name": "ElementaryTypeName",
-                "src": "59:4:0"
+                "src": "62:4:0"
               },
               {
                 "attributes": {
@@ -337,13 +345,13 @@
             ],
             "id": 3,
             "name": "VariableDeclaration",
-            "src": "59:16:0"
+            "src": "62:16:0"
           },
           {
             "attributes": {
               "constant": false,
               "name": "CandidateDetails",
-              "scope": 105,
+              "scope": 115,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "address",
@@ -371,7 +379,7 @@
                     },
                     "id": 4,
                     "name": "ElementaryTypeName",
-                    "src": "120:7:0"
+                    "src": "126:7:0"
                   },
                   {
                     "attributes": {
@@ -387,7 +395,7 @@
                 ],
                 "id": 5,
                 "name": "VariableDeclaration",
-                "src": "120:12:0"
+                "src": "126:12:0"
               },
               {
                 "attributes": {
@@ -408,12 +416,12 @@
                     },
                     "id": 6,
                     "name": "ElementaryTypeName",
-                    "src": "142:7:0"
+                    "src": "149:7:0"
                   }
                 ],
                 "id": 7,
                 "name": "VariableDeclaration",
-                "src": "142:19:0"
+                "src": "149:19:0"
               },
               {
                 "attributes": {
@@ -434,12 +442,12 @@
                     },
                     "id": 8,
                     "name": "ElementaryTypeName",
-                    "src": "171:7:0"
+                    "src": "179:7:0"
                   }
                 ],
                 "id": 9,
                 "name": "VariableDeclaration",
-                "src": "171:16:0"
+                "src": "179:16:0"
               },
               {
                 "attributes": {
@@ -460,23 +468,23 @@
                     },
                     "id": 10,
                     "name": "ElementaryTypeName",
-                    "src": "197:4:0"
+                    "src": "206:4:0"
                   }
                 ],
                 "id": 11,
                 "name": "VariableDeclaration",
-                "src": "197:15:0"
+                "src": "206:15:0"
               }
             ],
             "id": 12,
             "name": "StructDefinition",
-            "src": "86:133:0"
+            "src": "91:138:0"
           },
           {
             "attributes": {
               "constant": false,
               "name": "candidates",
-              "scope": 105,
+              "scope": 115,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(uint256 => struct CandidateContract.CandidateDetails storage ref)",
@@ -497,7 +505,7 @@
                     },
                     "id": 13,
                     "name": "ElementaryTypeName",
-                    "src": "238:4:0"
+                    "src": "250:4:0"
                   },
                   {
                     "attributes": {
@@ -508,17 +516,17 @@
                     },
                     "id": 14,
                     "name": "UserDefinedTypeName",
-                    "src": "246:16:0"
+                    "src": "258:16:0"
                   }
                 ],
                 "id": 15,
                 "name": "Mapping",
-                "src": "229:34:0"
+                "src": "241:34:0"
               }
             ],
             "id": 16,
             "name": "VariableDeclaration",
-            "src": "229:52:0"
+            "src": "241:52:0"
           },
           {
             "attributes": {
@@ -528,9 +536,9 @@
               "modifiers": [
                 null
               ],
-              "name": "setCandidateId",
+              "name": "idSetCandidate",
               "payable": false,
-              "scope": 105,
+              "scope": 115,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public",
@@ -561,12 +569,12 @@
                         },
                         "id": 17,
                         "name": "ElementaryTypeName",
-                        "src": "317:4:0"
+                        "src": "331:4:0"
                       }
                     ],
                     "id": 18,
                     "name": "VariableDeclaration",
-                    "src": "317:17:0"
+                    "src": "331:17:0"
                   },
                   {
                     "attributes": {
@@ -649,7 +657,7 @@
                 ],
                 "id": 19,
                 "name": "ParameterList",
-                "src": "316:19:0",
+                "src": "330:19:0",
                 "attributes": {
                   "length": null,
                   "type": "address[] storage pointer"
@@ -664,7 +672,7 @@
                 "children": [],
                 "id": 20,
                 "name": "ParameterList",
-                "src": "343:0:0"
+                "src": "357:0:0"
               },
               {
                 "children": [
@@ -706,7 +714,7 @@
                             },
                             "id": 21,
                             "name": "Identifier",
-                            "src": "353:11:0"
+                            "src": "368:11:0"
                           },
                           {
                             "attributes": {
@@ -720,12 +728,12 @@
                             },
                             "id": 22,
                             "name": "Identifier",
-                            "src": "367:12:0"
+                            "src": "382:12:0"
                           }
                         ],
                         "id": 23,
                         "name": "Assignment",
-                        "src": "353:26:0"
+                        "src": "368:26:0"
                       },
                       {
                         "attributes": {
@@ -790,7 +798,7 @@
                     ],
                     "id": 24,
                     "name": "ExpressionStatement",
-                    "src": "353:26:0"
+                    "src": "368:26:0"
                   },
                   {
                     "children": [
@@ -1161,25 +1169,25 @@
                 ],
                 "id": 25,
                 "name": "Block",
-                "src": "343:43:0"
+                "src": "357:45:0"
               }
             ],
             "id": 26,
             "name": "FunctionDefinition",
-            "src": "292:94:0"
+            "src": "306:96:0"
           },
           {
             "attributes": {
-              "constant": true,
+              "constant": false,
               "implemented": true,
               "isConstructor": false,
               "modifiers": [
                 null
               ],
-              "name": "getcandidateId",
+              "name": "candidateIdSetter",
               "payable": false,
-              "scope": 105,
-              "stateMutability": "view",
+              "scope": 115,
+              "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
             },
@@ -1189,28 +1197,28 @@
                   {
                     "attributes": {
                       "constant": false,
-                      "name": "_name",
-                      "scope": 67,
+                      "name": "_candidateId",
+                      "scope": 36,
                       "stateVariable": false,
                       "storageLocation": "default",
-                      "type": "bytes32",
+                      "type": "uint256",
                       "value": null,
                       "visibility": "internal"
                     },
                     "children": [
                       {
                         "attributes": {
-                          "name": "bytes32",
-                          "type": "bytes32"
+                          "name": "uint",
+                          "type": "uint256"
                         },
                         "id": 27,
                         "name": "ElementaryTypeName",
-                        "src": "428:7:0"
+                        "src": "438:4:0"
                       }
                     ],
                     "id": 28,
                     "name": "VariableDeclaration",
-                    "src": "428:13:0"
+                    "src": "438:17:0"
                   },
                   {
                     "attributes": {
@@ -1291,9 +1299,9 @@
                     "src": "508:16:0"
                   }
                 ],
-                "id": 27,
+                "id": 29,
                 "name": "ParameterList",
-                "src": "416:2:0",
+                "src": "437:19:0",
                 "attributes": {
                   "parameters": [
                     null
@@ -1331,7 +1339,7 @@
                         },
                         "id": 28,
                         "name": "ElementaryTypeName",
-                        "src": "440:4:0",
+                        "src": "458:4:0",
                         "children": [
                           {
                             "attributes": {
@@ -1422,7 +1430,7 @@
                     ],
                     "id": 29,
                     "name": "VariableDeclaration",
-                    "src": "440:7:0"
+                    "src": "458:7:0"
                   },
                   {
                     "attributes": {
@@ -1505,7 +1513,7 @@
                 ],
                 "id": 30,
                 "name": "ParameterList",
-                "src": "439:9:0",
+                "src": "464:0:0",
                 "attributes": {
                   "parameters": [
                     null
@@ -1537,12 +1545,46 @@
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 3
+                          "referencedDeclaration": 3,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "="
                         },
-                        "children": [],
-                        "id": 31,
-                        "name": "Identifier",
-                        "src": "466:11:0"
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 3,
+                              "type": "uint256",
+                              "value": "candidateId"
+                            },
+                            "id": 31,
+                            "name": "Identifier",
+                            "src": "475:11:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 28,
+                              "type": "uint256",
+                              "value": "_candidateId"
+                            },
+                            "id": 32,
+                            "name": "Identifier",
+                            "src": "489:12:0"
+                          }
+                        ],
+                        "id": 33,
+                        "name": "Assignment",
+                        "src": "475:26:0"
                       },
                       {
                         "attributes": {
@@ -1588,9 +1630,9 @@
                         "src": "570:23:0"
                       }
                     ],
-                    "id": 32,
-                    "name": "Return",
-                    "src": "459:18:0"
+                    "id": 34,
+                    "name": "ExpressionStatement",
+                    "src": "475:26:0"
                   },
                   {
                     "attributes": {
@@ -1952,27 +1994,27 @@
                     "src": "739:40:0"
                   }
                 ],
-                "id": 33,
+                "id": 35,
                 "name": "Block",
-                "src": "449:35:0"
+                "src": "464:45:0"
               }
             ],
-            "id": 34,
+            "id": 36,
             "name": "FunctionDefinition",
-            "src": "392:92:0"
+            "src": "410:99:0"
           },
           {
             "attributes": {
-              "constant": false,
+              "constant": true,
               "implemented": true,
               "isConstructor": false,
               "modifiers": [
                 null
               ],
-              "name": "setCandidateDetails",
+              "name": "getcandidateId",
               "payable": false,
-              "scope": 105,
-              "stateMutability": "nonpayable",
+              "scope": 115,
+              "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
             },
@@ -2003,12 +2045,12 @@
                         },
                         "id": 35,
                         "name": "ElementaryTypeName",
-                        "src": "533:7:0"
+                        "src": "556:7:0"
                       }
                     ],
                     "id": 36,
                     "name": "VariableDeclaration",
-                    "src": "533:13:0"
+                    "src": "556:13:0"
                   },
                   {
                     "attributes": {
@@ -2029,12 +2071,12 @@
                         },
                         "id": 37,
                         "name": "ElementaryTypeName",
-                        "src": "556:7:0"
+                        "src": "580:7:0"
                       }
                     ],
                     "id": 38,
                     "name": "VariableDeclaration",
-                    "src": "556:20:0"
+                    "src": "580:20:0"
                   },
                   {
                     "attributes": {
@@ -2055,12 +2097,12 @@
                         },
                         "id": 39,
                         "name": "ElementaryTypeName",
-                        "src": "586:7:0"
+                        "src": "611:7:0"
                       }
                     ],
                     "id": 40,
                     "name": "VariableDeclaration",
-                    "src": "586:17:0"
+                    "src": "611:17:0"
                   },
                   {
                     "attributes": {
@@ -2081,28 +2123,28 @@
                         },
                         "id": 41,
                         "name": "ElementaryTypeName",
-                        "src": "613:4:0"
+                        "src": "639:4:0"
                       }
                     ],
                     "id": 42,
                     "name": "VariableDeclaration",
-                    "src": "613:16:0"
+                    "src": "639:16:0"
                   }
                 ],
-                "id": 43,
+                "id": 37,
                 "name": "ParameterList",
-                "src": "523:112:0"
+                "src": "541:2:0"
               },
               {
                 "children": [
                   {
                     "attributes": {
                       "constant": false,
-                      "name": "",
-                      "scope": 96,
+                      "name": "id",
+                      "scope": 44,
                       "stateVariable": false,
                       "storageLocation": "default",
-                      "type": "bytes32",
+                      "type": "uint256",
                       "value": null,
                       "visibility": "internal"
                     },
@@ -2110,8 +2152,8 @@
                       {
                         "attributes": {
                           "length": null,
-                          "type": "bytes32",
-                          "name": "bytes32"
+                          "type": "uint256",
+                          "name": "uint"
                         },
                         "children": [
                           {
@@ -2124,14 +2166,14 @@
                             "src": "1229:7:0"
                           }
                         ],
-                        "id": 71,
+                        "id": 38,
                         "name": "ElementaryTypeName",
-                        "src": "875:7:0"
+                        "src": "565:4:0"
                       }
                     ],
-                    "id": 72,
+                    "id": 39,
                     "name": "VariableDeclaration",
-                    "src": "875:7:0"
+                    "src": "565:7:0"
                   },
                   {
                     "attributes": {
@@ -2212,9 +2254,9 @@
                     "src": "926:4:0"
                   }
                 ],
-                "id": 44,
+                "id": 40,
                 "name": "ParameterList",
-                "src": "648:0:0",
+                "src": "564:9:0",
                 "attributes": {
                   "parameters": [
                     null
@@ -2225,7 +2267,7 @@
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 100,
+                      "functionReturnParameters": 40,
                       "assignments": [
                         45
                       ]
@@ -2237,9 +2279,9 @@
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 17,
-                          "type": "struct CandidateContract.CandidateDetails storage pointer",
-                          "value": null,
+                          "referencedDeclaration": 3,
+                          "type": "uint256",
+                          "value": "candidateId",
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -2253,9 +2295,9 @@
                           "typeName": null,
                           "visibility": "internal"
                         },
-                        "id": 45,
-                        "name": "VariableDeclaration",
-                        "src": "658:19:0",
+                        "id": 41,
+                        "name": "Identifier",
+                        "src": "592:11:0",
                         "children": [
                           {
                             "attributes": {
@@ -2326,7 +2368,7 @@
                             },
                             "id": 46,
                             "name": "Identifier",
-                            "src": "680:10:0"
+                            "src": "709:10:0"
                           },
                           {
                             "attributes": {
@@ -2340,17 +2382,17 @@
                             },
                             "id": 47,
                             "name": "Identifier",
-                            "src": "691:11:0"
+                            "src": "720:11:0"
                           }
                         ],
                         "id": 48,
                         "name": "IndexAccess",
-                        "src": "680:23:0"
+                        "src": "709:23:0"
                       }
                     ],
-                    "id": 49,
-                    "name": "VariableDeclarationStatement",
-                    "src": "658:45:0"
+                    "id": 42,
+                    "name": "Return",
+                    "src": "585:18:0"
                   },
                   {
                     "attributes": {
@@ -2393,12 +2435,12 @@
                                 },
                                 "id": 50,
                                 "name": "Identifier",
-                                "src": "713:15:0"
+                                "src": "743:15:0"
                               }
                             ],
                             "id": 52,
                             "name": "MemberAccess",
-                            "src": "713:20:0"
+                            "src": "743:20:0"
                           },
                           {
                             "attributes": {
@@ -2433,7 +2475,7 @@
                             ],
                             "id": 53,
                             "name": "Identifier",
-                            "src": "736:5:0"
+                            "src": "766:5:0"
                           },
                           {
                             "attributes": {
@@ -2500,12 +2542,12 @@
                         ],
                         "id": 54,
                         "name": "Assignment",
-                        "src": "713:28:0"
+                        "src": "743:28:0"
                       }
                     ],
                     "id": 55,
                     "name": "ExpressionStatement",
-                    "src": "713:28:0"
+                    "src": "743:28:0"
                   },
                   {
                     "children": [
@@ -2544,12 +2586,12 @@
                                 },
                                 "id": 56,
                                 "name": "Identifier",
-                                "src": "751:15:0"
+                                "src": "782:15:0"
                               }
                             ],
                             "id": 58,
                             "name": "MemberAccess",
-                            "src": "751:27:0"
+                            "src": "782:27:0"
                           },
                           {
                             "attributes": {
@@ -2563,17 +2605,17 @@
                             },
                             "id": 59,
                             "name": "Identifier",
-                            "src": "781:12:0"
+                            "src": "812:12:0"
                           }
                         ],
                         "id": 60,
                         "name": "Assignment",
-                        "src": "751:42:0"
+                        "src": "782:42:0"
                       }
                     ],
                     "id": 61,
                     "name": "ExpressionStatement",
-                    "src": "751:42:0"
+                    "src": "782:42:0"
                   },
                   {
                     "children": [
@@ -2612,12 +2654,12 @@
                                 },
                                 "id": 62,
                                 "name": "Identifier",
-                                "src": "803:15:0"
+                                "src": "835:15:0"
                               }
                             ],
                             "id": 64,
                             "name": "MemberAccess",
-                            "src": "803:24:0"
+                            "src": "835:24:0"
                           },
                           {
                             "attributes": {
@@ -2631,17 +2673,17 @@
                             },
                             "id": 65,
                             "name": "Identifier",
-                            "src": "830:9:0"
+                            "src": "862:9:0"
                           }
                         ],
                         "id": 66,
                         "name": "Assignment",
-                        "src": "803:36:0"
+                        "src": "835:36:0"
                       }
                     ],
                     "id": 67,
                     "name": "ExpressionStatement",
-                    "src": "803:36:0"
+                    "src": "835:36:0"
                   },
                   {
                     "children": [
@@ -2680,12 +2722,12 @@
                                 },
                                 "id": 68,
                                 "name": "Identifier",
-                                "src": "849:15:0"
+                                "src": "882:15:0"
                               }
                             ],
                             "id": 70,
                             "name": "MemberAccess",
-                            "src": "849:26:0"
+                            "src": "882:26:0"
                           },
                           {
                             "attributes": {
@@ -2699,37 +2741,37 @@
                             },
                             "id": 71,
                             "name": "Identifier",
-                            "src": "878:11:0"
+                            "src": "911:11:0"
                           }
                         ],
                         "id": 72,
                         "name": "Assignment",
-                        "src": "849:40:0"
+                        "src": "882:40:0"
                       }
                     ],
                     "id": 73,
                     "name": "ExpressionStatement",
-                    "src": "849:40:0"
+                    "src": "882:40:0"
                   }
                 ],
-                "id": 74,
+                "id": 43,
                 "name": "Block",
-                "src": "648:248:0"
+                "src": "574:37:0"
               }
             ],
-            "id": 75,
+            "id": 44,
             "name": "FunctionDefinition",
-            "src": "494:402:0"
+            "src": "517:94:0"
           },
           {
             "attributes": {
-              "constant": true,
+              "constant": false,
               "implemented": true,
               "isConstructor": false,
-              "name": "getCandidateDetails",
+              "name": "setCandidateDetails",
               "payable": false,
-              "scope": 105,
-              "stateMutability": "view",
+              "scope": 115,
+              "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public",
               "modifiers": [
@@ -2742,34 +2784,8 @@
                   {
                     "attributes": {
                       "constant": false,
-                      "name": "_candidateId",
-                      "scope": 104,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "uint256",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "uint",
-                          "type": "uint256"
-                        },
-                        "id": 76,
-                        "name": "ElementaryTypeName",
-                        "src": "936:4:0"
-                      }
-                    ],
-                    "id": 77,
-                    "name": "VariableDeclaration",
-                    "src": "936:17:0"
-                  },
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "_lastName",
-                      "scope": 90,
+                      "name": "_name",
+                      "scope": 85,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -2782,20 +2798,20 @@
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 42,
+                        "id": 45,
                         "name": "ElementaryTypeName",
-                        "src": "547:7:0"
+                        "src": "663:7:0"
                       }
                     ],
-                    "id": 43,
+                    "id": 46,
                     "name": "VariableDeclaration",
-                    "src": "547:17:0"
+                    "src": "663:13:0"
                   },
                   {
                     "attributes": {
                       "constant": false,
-                      "name": "_location",
-                      "scope": 90,
+                      "name": "_dateOfBirth",
+                      "scope": 85,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -2808,20 +2824,46 @@
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 44,
+                        "id": 47,
                         "name": "ElementaryTypeName",
-                        "src": "574:7:0"
+                        "src": "687:7:0"
                       }
                     ],
-                    "id": 45,
+                    "id": 48,
                     "name": "VariableDeclaration",
-                    "src": "574:17:0"
+                    "src": "687:20:0"
                   },
                   {
                     "attributes": {
                       "constant": false,
-                      "name": "_age",
-                      "scope": 90,
+                      "name": "_standFor",
+                      "scope": 85,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 49,
+                        "name": "ElementaryTypeName",
+                        "src": "718:7:0"
+                      }
+                    ],
+                    "id": 50,
+                    "name": "VariableDeclaration",
+                    "src": "718:17:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_votesCount",
+                      "scope": 85,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2834,19 +2876,19 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 46,
+                        "id": 51,
                         "name": "ElementaryTypeName",
-                        "src": "601:4:0"
+                        "src": "746:4:0"
                       }
                     ],
-                    "id": 47,
+                    "id": 52,
                     "name": "VariableDeclaration",
-                    "src": "601:9:0"
+                    "src": "746:16:0"
                   }
                 ],
-                "id": 78,
+                "id": 53,
                 "name": "ParameterList",
-                "src": "935:19:0"
+                "src": "652:117:0"
               },
               {
                 "attributes": {
@@ -2874,12 +2916,12 @@
                         },
                         "id": 79,
                         "name": "ElementaryTypeName",
-                        "src": "985:7:0"
+                        "src": "1022:7:0"
                       }
                     ],
                     "id": 80,
                     "name": "VariableDeclaration",
-                    "src": "985:7:0"
+                    "src": "1022:7:0"
                   },
                   {
                     "attributes": {
@@ -2900,12 +2942,12 @@
                         },
                         "id": 81,
                         "name": "ElementaryTypeName",
-                        "src": "1002:7:0"
+                        "src": "1040:7:0"
                       }
                     ],
                     "id": 82,
                     "name": "VariableDeclaration",
-                    "src": "1002:7:0"
+                    "src": "1040:7:0"
                   },
                   {
                     "attributes": {
@@ -2926,12 +2968,12 @@
                         },
                         "id": 83,
                         "name": "ElementaryTypeName",
-                        "src": "1019:7:0"
+                        "src": "1058:7:0"
                       }
                     ],
                     "id": 84,
                     "name": "VariableDeclaration",
-                    "src": "1019:7:0"
+                    "src": "1058:7:0"
                   },
                   {
                     "attributes": {
@@ -2952,17 +2994,17 @@
                         },
                         "id": 85,
                         "name": "ElementaryTypeName",
-                        "src": "1036:4:0"
+                        "src": "1076:4:0"
                       }
                     ],
                     "id": 86,
                     "name": "VariableDeclaration",
-                    "src": "1036:4:0"
+                    "src": "1076:4:0"
                   }
                 ],
-                "id": 87,
+                "id": 54,
                 "name": "ParameterList",
-                "src": "975:72:0"
+                "src": "783:0:0"
               },
               {
                 "attributes": {
@@ -2981,18 +3023,18 @@
                       "type": "modifier ()",
                       "value": "isOwner",
                       "assignments": [
-                        88
+                        55
                       ]
                     },
-                    "id": 92,
+                    "id": 59,
                     "name": "VariableDeclarationStatement",
-                    "src": "1058:46:0",
+                    "src": "794:45:0",
                     "children": [
                       {
                         "attributes": {
                           "constant": false,
                           "name": "candidateObject",
-                          "scope": 104,
+                          "scope": 85,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "struct CandidateContract.CandidateDetails storage pointer",
@@ -3001,9 +3043,9 @@
                           "visibility": "internal"
                         },
                         "children": [],
-                        "id": 88,
+                        "id": 55,
                         "name": "VariableDeclaration",
-                        "src": "1058:19:0"
+                        "src": "794:19:0"
                       },
                       {
                         "attributes": {
@@ -3025,9 +3067,9 @@
                               "type": "mapping(uint256 => struct CandidateContract.CandidateDetails storage ref)",
                               "value": "candidates"
                             },
-                            "id": 89,
+                            "id": 56,
                             "name": "Identifier",
-                            "src": "1080:10:0"
+                            "src": "816:10:0"
                           },
                           {
                             "attributes": {
@@ -3035,18 +3077,18 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 77,
+                              "referencedDeclaration": 3,
                               "type": "uint256",
-                              "value": "_candidateId"
+                              "value": "candidateId"
                             },
-                            "id": 90,
+                            "id": 57,
                             "name": "Identifier",
-                            "src": "1091:12:0"
+                            "src": "827:11:0"
                           }
                         ],
-                        "id": 91,
+                        "id": 58,
                         "name": "IndexAccess",
-                        "src": "1080:24:0"
+                        "src": "816:23:0"
                       }
                     ]
                   },
@@ -3063,7 +3105,8 @@
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
-                          "type": "tuple(bytes32,bytes32,bytes32,uint256)"
+                          "type": "bytes32",
+                          "operator": "="
                         },
                         "children": [
                           {
@@ -3072,7 +3115,7 @@
                               "isConstant": false,
                               "isLValue": true,
                               "isPure": false,
-                              "lValueRequested": false,
+                              "lValueRequested": true,
                               "member_name": "name",
                               "referencedDeclaration": 5,
                               "type": "bytes32"
@@ -3084,18 +3127,18 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 88,
+                                  "referencedDeclaration": 55,
                                   "type": "struct CandidateContract.CandidateDetails storage pointer",
                                   "value": "candidateObject"
                                 },
-                                "id": 93,
+                                "id": 60,
                                 "name": "Identifier",
-                                "src": "1135:15:0"
+                                "src": "850:15:0"
                               }
                             ],
-                            "id": 94,
+                            "id": 62,
                             "name": "MemberAccess",
-                            "src": "1135:20:0"
+                            "src": "850:20:0"
                           },
                           {
                             "attributes": {
@@ -3105,8 +3148,12 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "dateOfBirth",
-                              "referencedDeclaration": 7,
-                              "type": "bytes32"
+                              "referencedDeclaration": 46,
+                              "type": "bytes32",
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "value": "_name"
                             },
                             "children": [
                               {
@@ -3121,12 +3168,12 @@
                                 },
                                 "id": 95,
                                 "name": "Identifier",
-                                "src": "1169:15:0"
+                                "src": "1214:15:0"
                               }
                             ],
-                            "id": 96,
-                            "name": "MemberAccess",
-                            "src": "1169:27:0"
+                            "id": 63,
+                            "name": "Identifier",
+                            "src": "873:5:0"
                           },
                           {
                             "attributes": {
@@ -3152,12 +3199,12 @@
                                 },
                                 "id": 97,
                                 "name": "Identifier",
-                                "src": "1210:15:0"
+                                "src": "1256:15:0"
                               }
                             ],
                             "id": 98,
                             "name": "MemberAccess",
-                            "src": "1210:24:0"
+                            "src": "1256:24:0"
                           },
                           {
                             "attributes": {
@@ -3183,27 +3230,231 @@
                                 },
                                 "id": 99,
                                 "name": "Identifier",
-                                "src": "1248:15:0"
+                                "src": "1295:15:0"
                               }
                             ],
                             "id": 100,
                             "name": "MemberAccess",
-                            "src": "1248:26:0"
+                            "src": "1295:26:0"
                           }
                         ],
-                        "id": 101,
-                        "name": "TupleExpression",
-                        "src": "1121:163:0"
+                        "id": 64,
+                        "name": "Assignment",
+                        "src": "850:28:0"
                       }
                     ],
-                    "id": 102,
-                    "name": "Return",
-                    "src": "1114:170:0"
+                    "id": 65,
+                    "name": "ExpressionStatement",
+                    "src": "850:28:0"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "bytes32"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "member_name": "dateOfBirth",
+                              "referencedDeclaration": 7,
+                              "type": "bytes32"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 55,
+                                  "type": "struct CandidateContract.CandidateDetails storage pointer",
+                                  "value": "candidateObject"
+                                },
+                                "id": 66,
+                                "name": "Identifier",
+                                "src": "889:15:0"
+                              }
+                            ],
+                            "id": 68,
+                            "name": "MemberAccess",
+                            "src": "889:27:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 48,
+                              "type": "bytes32",
+                              "value": "_dateOfBirth"
+                            },
+                            "id": 69,
+                            "name": "Identifier",
+                            "src": "919:12:0"
+                          }
+                        ],
+                        "id": 70,
+                        "name": "Assignment",
+                        "src": "889:42:0"
+                      }
+                    ],
+                    "id": 71,
+                    "name": "ExpressionStatement",
+                    "src": "889:42:0"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "bytes32"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "member_name": "standFor",
+                              "referencedDeclaration": 9,
+                              "type": "bytes32"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 55,
+                                  "type": "struct CandidateContract.CandidateDetails storage pointer",
+                                  "value": "candidateObject"
+                                },
+                                "id": 72,
+                                "name": "Identifier",
+                                "src": "942:15:0"
+                              }
+                            ],
+                            "id": 74,
+                            "name": "MemberAccess",
+                            "src": "942:24:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 50,
+                              "type": "bytes32",
+                              "value": "_standFor"
+                            },
+                            "id": 75,
+                            "name": "Identifier",
+                            "src": "969:9:0"
+                          }
+                        ],
+                        "id": 76,
+                        "name": "Assignment",
+                        "src": "942:36:0"
+                      }
+                    ],
+                    "id": 77,
+                    "name": "ExpressionStatement",
+                    "src": "942:36:0"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "member_name": "votesCount",
+                              "referencedDeclaration": 11,
+                              "type": "uint256"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 55,
+                                  "type": "struct CandidateContract.CandidateDetails storage pointer",
+                                  "value": "candidateObject"
+                                },
+                                "id": 78,
+                                "name": "Identifier",
+                                "src": "989:15:0"
+                              }
+                            ],
+                            "id": 80,
+                            "name": "MemberAccess",
+                            "src": "989:26:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 52,
+                              "type": "uint256",
+                              "value": "_votesCount"
+                            },
+                            "id": 81,
+                            "name": "Identifier",
+                            "src": "1018:11:0"
+                          }
+                        ],
+                        "id": 82,
+                        "name": "Assignment",
+                        "src": "989:40:0"
+                      }
+                    ],
+                    "id": 83,
+                    "name": "ExpressionStatement",
+                    "src": "989:40:0"
                   }
                 ],
-                "id": 103,
+                "id": 84,
                 "name": "Block",
-                "src": "1048:243:0"
+                "src": "783:254:0"
               },
               {
                 "children": [
@@ -3668,9 +3919,9 @@
                 "src": "637:286:0"
               }
             ],
-            "id": 104,
+            "id": 85,
             "name": "FunctionDefinition",
-            "src": "906:385:0"
+            "src": "623:414:0"
           },
           {
             "attributes": {
@@ -3682,7 +3933,7 @@
               ],
               "name": "getCandidateDetails",
               "payable": false,
-              "scope": 131,
+              "scope": 115,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -3693,119 +3944,8 @@
                   {
                     "attributes": {
                       "constant": false,
-                      "name": "_addressForCandidate",
-                      "scope": 119,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "address",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "address",
-                          "type": "address"
-                        },
-                        "id": 91,
-                        "name": "ElementaryTypeName",
-                        "src": "962:7:0"
-                      }
-                    ],
-                    "id": 92,
-                    "name": "VariableDeclaration",
-                    "src": "962:28:0"
-                  }
-                ],
-                "id": 93,
-                "name": "ParameterList",
-                "src": "961:30:0"
-              },
-              {
-                "children": [
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "_firstName",
-                      "scope": 119,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "bytes32",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "bytes32",
-                          "type": "bytes32"
-                        },
-                        "id": 94,
-                        "name": "ElementaryTypeName",
-                        "src": "1035:7:0"
-                      }
-                    ],
-                    "id": 95,
-                    "name": "VariableDeclaration",
-                    "src": "1035:18:0"
-                  },
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "_lastName",
-                      "scope": 119,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "bytes32",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "bytes32",
-                          "type": "bytes32"
-                        },
-                        "id": 96,
-                        "name": "ElementaryTypeName",
-                        "src": "1067:7:0"
-                      }
-                    ],
-                    "id": 97,
-                    "name": "VariableDeclaration",
-                    "src": "1067:17:0"
-                  },
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "_location",
-                      "scope": 119,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "bytes32",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "bytes32",
-                          "type": "bytes32"
-                        },
-                        "id": 98,
-                        "name": "ElementaryTypeName",
-                        "src": "1098:7:0"
-                      }
-                    ],
-                    "id": 99,
-                    "name": "VariableDeclaration",
-                    "src": "1098:17:0"
-                  },
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "_age",
-                      "scope": 119,
+                      "name": "_candidateId",
+                      "scope": 114,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -3818,45 +3958,156 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 100,
+                        "id": 86,
                         "name": "ElementaryTypeName",
-                        "src": "1129:4:0"
+                        "src": "1079:4:0"
                       }
                     ],
-                    "id": 101,
+                    "id": 87,
                     "name": "VariableDeclaration",
-                    "src": "1129:9:0"
+                    "src": "1079:17:0"
                   }
                 ],
-                "id": 102,
+                "id": 88,
                 "name": "ParameterList",
-                "src": "1021:127:0"
+                "src": "1078:19:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 114,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 89,
+                        "name": "ElementaryTypeName",
+                        "src": "1129:7:0"
+                      }
+                    ],
+                    "id": 90,
+                    "name": "VariableDeclaration",
+                    "src": "1129:7:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 114,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 91,
+                        "name": "ElementaryTypeName",
+                        "src": "1147:7:0"
+                      }
+                    ],
+                    "id": 92,
+                    "name": "VariableDeclaration",
+                    "src": "1147:7:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 114,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 93,
+                        "name": "ElementaryTypeName",
+                        "src": "1165:7:0"
+                      }
+                    ],
+                    "id": 94,
+                    "name": "VariableDeclaration",
+                    "src": "1165:7:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 114,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 95,
+                        "name": "ElementaryTypeName",
+                        "src": "1183:4:0"
+                      }
+                    ],
+                    "id": 96,
+                    "name": "VariableDeclaration",
+                    "src": "1183:4:0"
+                  }
+                ],
+                "id": 97,
+                "name": "ParameterList",
+                "src": "1118:77:0"
               },
               {
                 "children": [
                   {
                     "attributes": {
                       "assignments": [
-                        103
+                        98
                       ]
                     },
                     "children": [
                       {
                         "attributes": {
                           "constant": false,
-                          "name": "addr",
-                          "scope": 119,
+                          "name": "candidateObject",
+                          "scope": 114,
                           "stateVariable": false,
                           "storageLocation": "default",
-                          "type": "struct CandidateContract.Candidate storage pointer",
+                          "type": "struct CandidateContract.CandidateDetails storage pointer",
                           "typeName": null,
                           "value": null,
                           "visibility": "internal"
                         },
                         "children": [],
-                        "id": 103,
+                        "id": 98,
                         "name": "VariableDeclaration",
-                        "src": "1163:8:0"
+                        "src": "1207:19:0"
                       },
                       {
                         "attributes": {
@@ -3865,7 +4116,7 @@
                           "isLValue": true,
                           "isPure": false,
                           "lValueRequested": false,
-                          "type": "struct CandidateContract.Candidate storage ref"
+                          "type": "struct CandidateContract.CandidateDetails storage ref"
                         },
                         "children": [
                           {
@@ -3875,12 +4126,12 @@
                                 null
                               ],
                               "referencedDeclaration": 16,
-                              "type": "mapping(address => struct CandidateContract.Candidate storage ref)",
+                              "type": "mapping(uint256 => struct CandidateContract.CandidateDetails storage ref)",
                               "value": "candidates"
                             },
-                            "id": 104,
+                            "id": 99,
                             "name": "Identifier",
-                            "src": "1174:10:0"
+                            "src": "1229:10:0"
                           },
                           {
                             "attributes": {
@@ -3888,27 +4139,27 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 92,
-                              "type": "address",
-                              "value": "_addressForCandidate"
+                              "referencedDeclaration": 87,
+                              "type": "uint256",
+                              "value": "_candidateId"
                             },
-                            "id": 105,
+                            "id": 100,
                             "name": "Identifier",
-                            "src": "1185:20:0"
+                            "src": "1240:12:0"
                           }
                         ],
-                        "id": 106,
+                        "id": 101,
                         "name": "IndexAccess",
-                        "src": "1174:32:0"
+                        "src": "1229:24:0"
                       }
                     ],
-                    "id": 107,
+                    "id": 102,
                     "name": "VariableDeclarationStatement",
-                    "src": "1163:43:0"
+                    "src": "1207:46:0"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 102
+                      "functionReturnParameters": 97
                     },
                     "children": [
                       {
@@ -3929,38 +4180,7 @@
                               "isLValue": true,
                               "isPure": false,
                               "lValueRequested": false,
-                              "member_name": "firstName",
-                              "referencedDeclaration": 3,
-                              "type": "bytes32"
-                            },
-                            "children": [
-                              {
-                                "attributes": {
-                                  "argumentTypes": null,
-                                  "overloadedDeclarations": [
-                                    null
-                                  ],
-                                  "referencedDeclaration": 103,
-                                  "type": "struct CandidateContract.Candidate storage pointer",
-                                  "value": "addr"
-                                },
-                                "id": 108,
-                                "name": "Identifier",
-                                "src": "1245:4:0"
-                              }
-                            ],
-                            "id": 109,
-                            "name": "MemberAccess",
-                            "src": "1245:14:0"
-                          },
-                          {
-                            "attributes": {
-                              "argumentTypes": null,
-                              "isConstant": false,
-                              "isLValue": true,
-                              "isPure": false,
-                              "lValueRequested": false,
-                              "member_name": "lastName",
+                              "member_name": "name",
                               "referencedDeclaration": 5,
                               "type": "bytes32"
                             },
@@ -3971,18 +4191,18 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 103,
-                                  "type": "struct CandidateContract.Candidate storage pointer",
-                                  "value": "addr"
+                                  "referencedDeclaration": 98,
+                                  "type": "struct CandidateContract.CandidateDetails storage pointer",
+                                  "value": "candidateObject"
                                 },
-                                "id": 110,
+                                "id": 103,
                                 "name": "Identifier",
-                                "src": "1277:4:0"
+                                "src": "1286:15:0"
                               }
                             ],
-                            "id": 111,
+                            "id": 104,
                             "name": "MemberAccess",
-                            "src": "1277:13:0"
+                            "src": "1286:20:0"
                           },
                           {
                             "attributes": {
@@ -3991,7 +4211,7 @@
                               "isLValue": true,
                               "isPure": false,
                               "lValueRequested": false,
-                              "member_name": "location",
+                              "member_name": "dateOfBirth",
                               "referencedDeclaration": 7,
                               "type": "bytes32"
                             },
@@ -4002,18 +4222,18 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 103,
-                                  "type": "struct CandidateContract.Candidate storage pointer",
-                                  "value": "addr"
+                                  "referencedDeclaration": 98,
+                                  "type": "struct CandidateContract.CandidateDetails storage pointer",
+                                  "value": "candidateObject"
                                 },
-                                "id": 112,
+                                "id": 105,
                                 "name": "Identifier",
-                                "src": "1308:4:0"
+                                "src": "1321:15:0"
                               }
                             ],
-                            "id": 113,
+                            "id": 106,
                             "name": "MemberAccess",
-                            "src": "1308:13:0"
+                            "src": "1321:27:0"
                           },
                           {
                             "attributes": {
@@ -4022,8 +4242,39 @@
                               "isLValue": true,
                               "isPure": false,
                               "lValueRequested": false,
-                              "member_name": "age",
+                              "member_name": "standFor",
                               "referencedDeclaration": 9,
+                              "type": "bytes32"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 98,
+                                  "type": "struct CandidateContract.CandidateDetails storage pointer",
+                                  "value": "candidateObject"
+                                },
+                                "id": 107,
+                                "name": "Identifier",
+                                "src": "1363:15:0"
+                              }
+                            ],
+                            "id": 108,
+                            "name": "MemberAccess",
+                            "src": "1363:24:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "votesCount",
+                              "referencedDeclaration": 11,
                               "type": "uint256"
                             },
                             "children": [
@@ -4033,38 +4284,38 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 103,
-                                  "type": "struct CandidateContract.Candidate storage pointer",
-                                  "value": "addr"
+                                  "referencedDeclaration": 98,
+                                  "type": "struct CandidateContract.CandidateDetails storage pointer",
+                                  "value": "candidateObject"
                                 },
-                                "id": 114,
+                                "id": 109,
                                 "name": "Identifier",
-                                "src": "1339:4:0"
+                                "src": "1402:15:0"
                               }
                             ],
-                            "id": 115,
+                            "id": 110,
                             "name": "MemberAccess",
-                            "src": "1339:8:0"
+                            "src": "1402:26:0"
                           }
                         ],
-                        "id": 116,
+                        "id": 111,
                         "name": "TupleExpression",
-                        "src": "1227:134:0"
+                        "src": "1271:168:0"
                       }
                     ],
-                    "id": 117,
+                    "id": 112,
                     "name": "Return",
-                    "src": "1220:141:0"
+                    "src": "1264:175:0"
                   }
                 ],
-                "id": 118,
+                "id": 113,
                 "name": "Block",
-                "src": "1149:223:0"
+                "src": "1196:251:0"
               }
             ],
-            "id": 119,
+            "id": 114,
             "name": "FunctionDefinition",
-            "src": "933:439:0"
+            "src": "1049:398:0"
           },
           {
             "attributes": {
@@ -4197,14 +4448,14 @@
             "src": "1382:109:0"
           }
         ],
-        "id": 105,
+        "id": 115,
         "name": "ContractDefinition",
-        "src": "26:1267:0"
+        "src": "28:1422:0"
       }
     ],
-    "id": 106,
+    "id": 116,
     "name": "SourceUnit",
-    "src": "0:1295:0"
+    "src": "0:1454:0"
   },
   "compiler": {
     "name": "solc",
@@ -4214,9 +4465,9 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xdd1f41ee6742fd441229cf15d4ec39c1112e3690"
+      "address": "0xe6d59436df2057f7d2669c6e87dc6a6b4c4f619c"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-02-19T10:28:44.210Z"
+  "updatedAt": "2018-02-20T15:04:13.092Z"
 }

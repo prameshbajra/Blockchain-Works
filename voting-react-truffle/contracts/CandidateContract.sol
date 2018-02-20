@@ -12,7 +12,11 @@ contract CandidateContract {
     
     mapping (uint => CandidateDetails) public candidates;
     
-    function setCandidateId (uint _candidateId) public {
+    function idSetCandidate (uint _candidateId) public {
+        candidateId = _candidateId;
+    }
+
+    function candidateIdSetter (uint _candidateId) public {
         candidateId = _candidateId;
     }
 
