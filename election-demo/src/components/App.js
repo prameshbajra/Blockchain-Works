@@ -1,17 +1,16 @@
-import React, { Component } from 'react'
-import SimpleStorageContract from '../../build/contracts/SimpleStorage.json'
-import getWeb3 from '../utils/getWeb3'
+import React, { Component } from 'react';
 
-import '../css/oswald.css'
-import '../css/open-sans.css'
-import '../css/pure-min.css'
-import '../css/App.css'
+import Election from '../../build/contracts/Election.json';
+import getWeb3 from '../utils/getWeb3';
+
 
 class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            web3: null
+            web3: null,
+            candidatesCount: undefined,
+            isButtonVisible: false
         }
     }
 
@@ -20,43 +19,54 @@ class App extends Component {
             this.setState({
                 web3: results.web3
             })
-            this.instantiateContract()
         }).catch(() => {
             console.log('Error finding web3.')
         })
     }
 
-    instantiateContract() {
-        const contract = require('truffle-contract')
-        const simpleStorage = contract(SimpleStorageContract)
-        simpleStorage.setProvider(this.state.web3.currentProvider)
-        var simpleStorageInstance;
+    addCandidate = (e) => {
+        e.preventDefault();
+        const candidateName = e.target.candidateName.value;
+        let electionContractInstance;
+        const contract = require('truffle-contract');
+        const electionContract = contract(Election);
+        electionContract.setProvider(this.state.web3.currentProvider);
         // Get accounts.
         this.state.web3.eth.getAccounts((error, accounts) => {
-            simpleStorage.deployed().then((instance) => {
-                simpleStorageInstance = instance
+            electionContract.deployed().then((instance) => {
+                electionContractInstance = instance
                 // Stores a given value, 9 by default.
-                return simpleStorageInstance.set(9, { from: accounts[0] })
+                return electionContractInstance.addCandidate(candidateName, { from: accounts[0] })
             }).then((result) => {
                 // Get the value from the contract to prove it worked.
-                return simpleStorageInstance.get.call(accounts[0])
-            }).then((result) => {
+                console.log("result", result);
+                return electionContractInstance.candidatesCount.call(accounts[0])
+            }).then((result2) => {
                 // Update state with the result.
-                return this.setState({ storageValue: result.c[0] })
-            })
+                console.log("result2", result2);
+                this.setState({ candidatesCount: result2.c[0], isButtonVisible: true });
+            }).catch((error) => {
+                console.log("You are not allowed to do this, Sorry !")
+            });
         })
     }
 
     render() {
         return (
             <div className="container">
-                <h1 className="text-center">Good to Go!</h1>
-                <h3 className="text-center">
-                    {this.state.storageValue}
-                </h3>
+                Add Candidate:
+                <form onSubmit={this.addCandidate}>
+                    <input type="text" name="candidateName" />
+                    <button type="submit">Submit</button>
+                </form>
+                {
+                    this.state.candidatesCount ?
+                        (<h3>{this.state.candidatesCount} are registered.</h3>) :
+                        null
+                }
             </div>
         );
     }
 }
 
-export default App
+export default App;
