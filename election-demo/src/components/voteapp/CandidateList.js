@@ -35,9 +35,13 @@ class CandidateList extends Component {
                 return electionContractInstance.candidatesCount.call();
             }).then((count) => {
                 this.setState(() => ({ candidatesCount: count.c[0] }));
+                // Candidate id is their index number hence for loop is
+                // used to fetch canidate data and store in array.
+                // Try to optimize this more ... But for now it works.
                 for (let i = 1; i <= this.state.candidatesCount; i++) {
                     electionContractInstance.candidates.call(i)
                         .then((result) => {
+                            // Destructuring previous array and adding to last.
                             this.setState(() => ({
                                 candidateArray: [...this.state.candidateArray,
                                 result[1]]

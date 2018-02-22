@@ -39,7 +39,6 @@ class Owner extends Component {
             }).then((result) => {
                 return electionContractInstance.candidatesCount.call();
             }).then((result2) => {
-                console.log(result2);
                 this.setState(() => ({ candidatesCount: result2.c[0], candidateName }));
             }).catch((error) => {
                 console.log("You are not allowed to do this, Sorry !")
@@ -59,6 +58,7 @@ class Owner extends Component {
                 {
                     this.state.candidateName ?
                         (<p>{this.state.candidateName} has been successfully registered. <br />
+                            {/* It was showing one less than total candidate hence + 1 is done */}
                             Total registered candidate : {this.state.candidatesCount + 1}</p>) : null
                 }
                 <br />
