@@ -11,7 +11,7 @@ class Vote extends Component {
         super(props);
         this.state = {
             web3: null,
-            isOwner: null,
+            isOwner: false,
         };
     }
 

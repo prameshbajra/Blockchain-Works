@@ -4,6 +4,7 @@ import Election from '../../../build/contracts/Election.json';
 import getWeb3 from '../../utils/getWeb3';
 
 import CandidateList from './CandidateList';
+import Timer from './Timer';
 
 class Owner extends Component {
     constructor(props) {
@@ -58,12 +59,11 @@ class Owner extends Component {
                 {
                     this.state.candidateName ?
                         (<p>{this.state.candidateName} has been successfully registered. <br />
-                            {/* It was showing one less than total candidate hence + 1 is done */}
-                            Total registered candidate : {this.state.candidatesCount + 1}</p>) : null
+                            Total registered candidate : {this.state.candidatesCount}</p>) : null
                 }
                 <br />
                 <CandidateList />
-                <h3>This is place for the timer.</h3>
+                <Timer />
             </div>
         );
     }
