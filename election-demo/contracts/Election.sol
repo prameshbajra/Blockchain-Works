@@ -12,7 +12,7 @@ contract Election {
     mapping(uint => Candidate) public candidates;
 
     uint public candidatesCount;
-    address owner;
+    address public owner;
 
     event votedEvent (
         uint indexed _candidateId
@@ -40,4 +40,5 @@ contract Election {
         candidates[_candidateId].voteCount ++;
         votedEvent(_candidateId);
     }
+    
 }
