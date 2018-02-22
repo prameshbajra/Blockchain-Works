@@ -36,11 +36,11 @@ class Vote extends Component {
                 electionContractInstance = instance
                 return electionContractInstance.owner.call();
             }).then((result) => {
-                if (result === this.state.web3.eth.accounts[0])
+                if (result === this.state.web3.eth.accounts[0]) {
                     this.setState(() => ({ isOwner: true }));
+                }
                 else
                     this.setState(() => ({ isOwner: false }));
-
             });
         })
     }

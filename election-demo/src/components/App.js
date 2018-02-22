@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Vote from './Vote';
-import NotFound from './NotFound';
+import Vote from './voteapp/Vote';
+import NotFound from './voteapp/NotFound';
 
 class App extends Component {
     render() {
