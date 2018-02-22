@@ -52,7 +52,6 @@ class CandidateList extends Component {
         return (
             <div>
                 CandidateList
-                {this.state.candidatesCount}
                 <div>
                     {
                         this.state.candidateArray.map((candidate) => {

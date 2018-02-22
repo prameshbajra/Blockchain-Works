@@ -59,7 +59,7 @@ class Owner extends Component {
                 {
                     this.state.candidateName ?
                         (<p>{this.state.candidateName} has been successfully registered. <br />
-                            Total registered candidate : {this.state.candidatesCount}</p>) : null
+                            Total registered candidate : {this.state.candidatesCount + 1}</p>) : null
                 }
                 <br />
                 <CandidateList />
