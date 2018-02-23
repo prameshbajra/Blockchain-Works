@@ -1,0 +1,2 @@
+console.log(JSON.stringify(this.state.startDate).slice(1, 11));
+        console.log(JSON.stringify(this.state.endDate).slice(1, 11));

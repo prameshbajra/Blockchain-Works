@@ -11,8 +11,10 @@ contract Election {
     mapping(address => bool) public voters;
     mapping(uint => Candidate) public candidates;
 
-    uint public candidatesCount;
     address public owner;
+    bytes32 public startDate;
+    bytes32 public endDate;
+    uint public candidatesCount;
 
     event votedEvent (
         uint indexed _candidateId
@@ -39,5 +41,10 @@ contract Election {
         voters[msg.sender] = true;
         candidates[_candidateId].voteCount ++;
         votedEvent(_candidateId);
+    }
+
+    function setTimer (bytes32 _startDate, bytes32 _endDate) public {
+        startDate = _startDate;
+        endDate = _endDate;
     }
 }
