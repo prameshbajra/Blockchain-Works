@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import Election from '../../../build/contracts/Election.json';
 import getWeb3 from '../../utils/getWeb3';
 
+import Results from './Results';
+
 import moment from 'moment';
 
 class Timer extends Component {
@@ -44,7 +46,7 @@ class Timer extends Component {
         if (moment().unix() >= moment(this.startDate).unix() && moment().unix() <= moment(this.endDate).unix()) {
             return (<h1>Keep Voting</h1>);
         }
-        return (<h1>The election has already ended</h1>);
+        return (<div><h1>The election has already ended</h1> <Results /></div>);
     }
 
     render() {

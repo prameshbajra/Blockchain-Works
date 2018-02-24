@@ -9,6 +9,7 @@ import Election from '../../../build/contracts/Election.json';
 import getWeb3 from '../../utils/getWeb3';
 
 import CandidateList from './CandidateList';
+import Results from './Results';
 
 class Owner extends Component {
     constructor(props) {
@@ -118,6 +119,7 @@ class Owner extends Component {
                     <button onClick={this.dateHandler}>Start Election</button>
                 </div>
                 {this.state.message}
+                <Results />
             </div>
         );
     }

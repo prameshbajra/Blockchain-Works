@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Timer from './Timer';
+import Results from './Results';
 
 import Election from '../../../build/contracts/Election.json';
 import getWeb3 from '../../utils/getWeb3';
@@ -117,6 +118,7 @@ class Voters extends Component {
                     {this.state.message}
                 </div>
                 <Timer />
+                <Results />
             </div>
         );
     }
