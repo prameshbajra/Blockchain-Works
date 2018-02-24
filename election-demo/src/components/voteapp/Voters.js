@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import Timer from './Timer';
-import Results from './Results';
 
 import Election from '../../../build/contracts/Election.json';
 import getWeb3 from '../../utils/getWeb3';
@@ -53,7 +52,7 @@ class Voters extends Component {
                 const startDate = this.state.web3.toAscii(this.state.startDate).replace(/\u0000/g, '');
                 const endDate = this.state.web3.toAscii(this.state.endDate).replace(/\u0000/g, '');
                 console.log(moment(startDate).unix(), moment(endDate).unix());
-                if (moment().unix() >= moment(startDate).unix() && moment().unix() <= moment(endDate).unix()) {
+                if (moment('2018-09-09').unix() >= moment(startDate).unix() && moment('2018-09-09').unix() <= moment(endDate).unix()) {
                     for (let i = 1; i <= count; i++) {
                         electionContractInstance.candidates.call(i)
                             .then((result) => {
@@ -118,7 +117,6 @@ class Voters extends Component {
                     {this.state.message}
                 </div>
                 <Timer />
-                <Results />
             </div>
         );
     }

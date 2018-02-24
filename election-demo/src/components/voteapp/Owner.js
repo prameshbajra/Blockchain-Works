@@ -9,7 +9,6 @@ import Election from '../../../build/contracts/Election.json';
 import getWeb3 from '../../utils/getWeb3';
 
 import CandidateList from './CandidateList';
-import Results from './Results';
 
 class Owner extends Component {
     constructor(props) {
@@ -53,13 +52,12 @@ class Owner extends Component {
             }).then((result2) => {
                 this.setState(() => ({ candidatesCount: result2.c[0], candidateName }));
             }).catch((error) => {
-                console.log("You are not allowed to do this, Sorry !")
+                this.setState(() => ({ message: "You are not allowed to do this, Sorry !" }));
             });
         })
     }
 
     dateHandler = () => {
-        console.log("Button Event");
         const startDate = JSON.stringify(this.state.startDate).slice(1, 11);
         const endDate = JSON.stringify(this.state.endDate).slice(1, 11);
         let electionContractInstance;
@@ -67,7 +65,6 @@ class Owner extends Component {
         const electionContract = contract(Election);
         electionContract.setProvider(this.state.web3.currentProvider);
         if (startDate.length === 10 && endDate.length === 10) {
-            console.log("Parse vako wala", startDate, endDate);
             this.state.web3.eth.getAccounts((error, accounts) => {
                 electionContract.deployed().then((instance) => {
                     electionContractInstance = instance;
@@ -83,7 +80,7 @@ class Owner extends Component {
                         message: "The election started."
                     }));
                 }).catch((error) => {
-                    console.log("You are not allowed to do this, Sorry !")
+                    this.setState(() => ({ message: "You are not allowed to do this, Sorry !" }));
                 });
             })
         } else {
@@ -119,7 +116,6 @@ class Owner extends Component {
                     <button onClick={this.dateHandler}>Start Election</button>
                 </div>
                 {this.state.message}
-                <Results />
             </div>
         );
     }
