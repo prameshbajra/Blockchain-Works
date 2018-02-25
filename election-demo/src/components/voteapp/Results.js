@@ -38,7 +38,7 @@ class Results extends Component {
             }).then((count) => {
                 // Candidate id is their index number hence for loop is
                 // used to fetch canidate data and store in array.
-                // Try to optimize this more ... But for now it works.
+                // Try to optimize this more ... But for now it works...
                 for (let i = 1; i <= count; i++) {
                     electionContractInstance.candidates.call(i)
                         .then((result) => {
@@ -74,7 +74,8 @@ class Results extends Component {
                                 this.state.candidateNameArray.map((name, i) => {
                                     return (
                                         <h3 key={i}>
-                                            {this.state.web3.toAscii(name).replace(/\u0000/g, '')} ------> {this.state.candidateVotesArray[i]}
+                                            {this.state.web3.toAscii(name).replace(/\u0000/g, '')} ------>
+                                            {this.state.candidateVotesArray[i]}
                                         </h3>
                                     )
                                 })

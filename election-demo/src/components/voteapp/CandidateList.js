@@ -59,6 +59,10 @@ class CandidateList extends Component {
                         this.state.candidateArray.map((candidate) => {
                             return (
                                 <li key={Math.random()}>
+                                    {/* 
+                                        > Math.random() because react need unique key to render.
+                                        > Using replace() because toAscii() gives other useless characters too.
+                                    */}
                                     {this.state.web3.toAscii(candidate).replace(/\u0000/g, '')}
                                 </li>
                             );

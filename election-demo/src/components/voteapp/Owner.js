@@ -68,12 +68,19 @@ class Owner extends Component {
         const contract = require('truffle-contract');
         const electionContract = contract(Election);
         electionContract.setProvider(this.state.web3.currentProvider);
+        // The startDate and endDates are sliced to fit exactly 10 characters ...
         if (startDate.length === 10 && endDate.length === 10) {
             this.state.web3.eth.getAccounts((error, accounts) => {
                 electionContract.deployed().then((instance) => {
                     electionContractInstance = instance;
                     return electionContractInstance.setTimer(startDate, endDate, { from: accounts[0] });
                 }).then((result) => {
+                    // calling startDate/endDate here is prolly not required,
+                    // because startDate/endDate variable(string of length 10)
+                    // that can be converted to number is  available in scope ...
+
+                    // clean up this part of the code later if time allows ...
+                    // Horrible hack / monkey patch ahead ...
                     return electionContractInstance.startDate.call();
                 }).then((result) => {
                     this.setState(() => ({ startSolDate: this.state.web3.toAscii(result).replace(/\u0000/g, '') }));
