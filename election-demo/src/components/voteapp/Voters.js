@@ -51,8 +51,8 @@ class Voters extends Component {
                 // Try to optimize this more ... But for now it works.
                 const startDate = this.state.web3.toAscii(this.state.startDate).replace(/\u0000/g, '');
                 const endDate = this.state.web3.toAscii(this.state.endDate).replace(/\u0000/g, '');
-                console.log(moment(startDate).unix(), moment(endDate).unix());
-                if (moment('2018-09-09').unix() >= moment(startDate).unix() && moment('2018-09-09').unix() <= moment(endDate).unix()) {
+                console.log(moment(startDate).unix(), moment().unix(), moment(endDate).unix());
+                if (moment('2019-09-09').unix() >= moment(startDate).unix() && moment('2019-09-09').unix() <= moment(endDate).unix()) {
                     for (let i = 1; i <= count; i++) {
                         electionContractInstance.candidates.call(i)
                             .then((result) => {

@@ -43,7 +43,7 @@ class Timer extends Component {
     }
 
     renderMessage = () => {
-        if (moment('2018-09-09').unix() >= moment(this.startDate).unix() && moment('2018-09-09').unix() <= moment(this.endDate).unix()) {
+        if (moment('2019-09-09').unix() >= moment(this.startDate).unix() && moment('2019-09-09').unix() <= moment(this.endDate).unix()) {
             return (<h1>Keep Voting</h1>);
         }
         return (<div><h1>The election has already ended</h1> <Results /></div>);

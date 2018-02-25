@@ -39,22 +39,26 @@ class Owner extends Component {
     addCandidate = (e) => {
         e.preventDefault();
         const candidateName = e.target.candidateName.value;
-        let electionContractInstance;
-        const contract = require('truffle-contract');
-        const electionContract = contract(Election);
-        electionContract.setProvider(this.state.web3.currentProvider);
-        this.state.web3.eth.getAccounts((error, accounts) => {
-            electionContract.deployed().then((instance) => {
-                electionContractInstance = instance;
-                return electionContractInstance.addCandidate(candidateName, { from: accounts[0] });
-            }).then((result) => {
-                return electionContractInstance.candidatesCount.call();
-            }).then((result2) => {
-                this.setState(() => ({ candidatesCount: result2.c[0], candidateName }));
-            }).catch((error) => {
-                this.setState(() => ({ message: "You are not allowed to do this, Sorry !" }));
-            });
-        })
+        if (candidateName.length > 5) {
+            let electionContractInstance;
+            const contract = require('truffle-contract');
+            const electionContract = contract(Election);
+            electionContract.setProvider(this.state.web3.currentProvider);
+            this.state.web3.eth.getAccounts((error, accounts) => {
+                electionContract.deployed().then((instance) => {
+                    electionContractInstance = instance;
+                    return electionContractInstance.addCandidate(candidateName, { from: accounts[0] });
+                }).then((result) => {
+                    return electionContractInstance.candidatesCount.call();
+                }).then((result2) => {
+                    this.setState(() => ({ candidatesCount: result2.c[0], candidateName }));
+                }).catch((error) => {
+                    this.setState(() => ({ message: "You are not allowed to do this, Sorry !" }));
+                });
+            })
+        } else {
+            this.setState(() => ({ message: "The Candidates name should be greater than 5 characters." }))
+        }
     }
 
     dateHandler = () => {
@@ -85,6 +89,7 @@ class Owner extends Component {
             })
         } else {
             console.log("Parse navako xai", this.state.startDate, this.state.endDate);
+            this.setState(() => ({ message: "It seems you haven't selected the dates. Please select the dates." }));
         }
     }
 
