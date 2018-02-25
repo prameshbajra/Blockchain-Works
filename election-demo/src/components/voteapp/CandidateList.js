@@ -54,7 +54,6 @@ class CandidateList extends Component {
     render() {
         return (
             <div>
-                CandidateList
                 <div>
                     {
                         this.state.candidateArray.map((candidate) => {

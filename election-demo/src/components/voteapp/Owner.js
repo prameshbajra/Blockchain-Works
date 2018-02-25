@@ -88,7 +88,6 @@ class Owner extends Component {
                 });
             })
         } else {
-            console.log("Parse navako xai", this.state.startDate, this.state.endDate);
             this.setState(() => ({ message: "It seems you haven't selected the dates. Please select the dates." }));
         }
     }

@@ -51,8 +51,14 @@ class Voters extends Component {
                 // Try to optimize this more ... But for now it works.
                 const startDate = this.state.web3.toAscii(this.state.startDate).replace(/\u0000/g, '');
                 const endDate = this.state.web3.toAscii(this.state.endDate).replace(/\u0000/g, '');
-                console.log(moment(startDate).unix(), moment().unix(), moment(endDate).unix());
-                if (moment('2019-09-09').unix() >= moment(startDate).unix() && moment('2019-09-09').unix() <= moment(endDate).unix()) {
+                if (moment(startDate).unix()) {
+                    if (moment().unix() < moment(startDate).unix()) {
+                        this.setState(() => ({ message: "The elections has not yet started." }));
+                        return;
+                    } else if ((moment().unix() > moment(endDate).unix())) {
+                        this.setState(() => ({ message: "The elections has already been completed." }));
+                        return;
+                    }
                     for (let i = 1; i <= count; i++) {
                         electionContractInstance.candidates.call(i)
                             .then((result) => {
@@ -62,8 +68,9 @@ class Voters extends Component {
                                 }));
                             });
                     }
+                    return;
                 } else {
-                    this.setState(() => ({ message: "The elections are already over." }))
+                    this.setState(() => ({ message: "The elections has notyet started." }));
                 }
             })
         })
@@ -98,7 +105,6 @@ class Voters extends Component {
     render() {
         return (
             <div>
-                CandidateList
                 <div>
                     {
                         this.state.candidateArray.map((candidate, i) => {
