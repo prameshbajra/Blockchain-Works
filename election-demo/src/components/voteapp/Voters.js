@@ -70,7 +70,7 @@ class Voters extends Component {
                     }
                     return;
                 } else {
-                    this.setState(() => ({ message: "The elections has notyet started." }));
+                    this.setState(() => ({ message: "The elections has not yet started." }));
                 }
             })
         })

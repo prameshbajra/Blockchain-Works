@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Vote from './voteapp/Vote';
+import RealEstate from './realestate/RealEstate';
 import NotFound from './voteapp/NotFound';
 
 class App extends Component {
@@ -10,6 +11,7 @@ class App extends Component {
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/vote" component={Vote} />
+                    <Route exact path="/realEstate" component={RealEstate} />
                     <Route component={NotFound} />
                 </Switch>
             </BrowserRouter >
