@@ -15,6 +15,7 @@ class HouseList extends Component {
             houseArray: [],
             locationArray: [],
             priceArray: [],
+            buyerArray: []
             // message: undefined,
             // startDate: null,
             // endDate: null
@@ -61,8 +62,8 @@ class HouseList extends Component {
                                 this.setState(() => ({
                                     houseArray: [...this.state.houseArray, result[1]],
                                     locationArray: [...this.state.locationArray, result[2]],
-                                    priceArray: [...this.state.priceArray, result[3].c[0]]
-
+                                    priceArray: [...this.state.priceArray, result[3].c[0]],
+                                    buyerArray: [...this.state.buyerArray, result[5]]
                                 }));
                             });
                     }
@@ -111,18 +112,21 @@ class HouseList extends Component {
                                         <img alt="Here" />
                                         <br />
                                         Name/Title:
-                                    {this.state.web3.toAscii(house).replace(/\u0000/g, '')}
+                                        {this.state.web3.toAscii(house).replace(/\u0000/g, '')}
                                         <br />
                                         Location:
-                                    {this.state.web3.toAscii(this.state.locationArray[i]).replace(/\u0000/g, '')}
+                                        {this.state.web3.toAscii(this.state.locationArray[i]).replace(/\u0000/g, '')}
                                         <br />
                                         Price:
-                                    {this.state.priceArray[i]}
+                                        {this.state.priceArray[i]}
                                         {
-                                            (<button onClick={(e) => this.buyHouse(e, i + 1)}>
-                                                BUY
-                                            </button>)
+                                            this.state.web3.toAscii(this.state.buyerArray[i]).replace(/\u0000/g, '') ?
+                                                (<h3>SOLD</h3>) :
+                                                (<button onClick={(e) => this.buyHouse(e, i + 1)}>
+                                                    BUY
+                                                </button>)
                                         }
+                                        {this.state.buyerArray[i]}
                                     </li>
                                 </div>
                             );
