@@ -48,6 +48,15 @@ class Vote extends Component {
     render() {
         return (
             <div>
+                <div className="navbar">
+                    <ul className="items">
+                        <li className="item"><a href="/">Dashboard</a></li>
+                        <li className="item ">
+                            <a className="active" href="/">Home</a>
+                        </li>
+                        <li className="item"><a href="">About</a></li>
+                    </ul>
+                </div>
                 {this.state.isOwner ? <Owner /> : <Voters />}
             </div>
         );

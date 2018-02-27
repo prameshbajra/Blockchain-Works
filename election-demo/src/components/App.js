@@ -5,10 +5,12 @@ import Vote from './voteapp/Vote';
 import RealEstate from './realestate/RealEstate';
 import NotFound from './voteapp/NotFound';
 
+import '../css/App.css';
+
 class App extends Component {
     render() {
         return (
-            <BrowserRouter>
+              <BrowserRouter>
                 <Switch>
                     <Route exact path="/vote" component={Vote} />
                     <Route exact path="/realEstate" component={RealEstate} />

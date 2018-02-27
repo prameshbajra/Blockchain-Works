@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import candlogo from '../../images/tauko.png';
 
 import Election from '../../../build/contracts/Election.json';
 import getWeb3 from '../../utils/getWeb3';
@@ -58,13 +59,22 @@ class CandidateList extends Component {
                     {
                         this.state.candidateArray.map((candidate) => {
                             return (
-                                <li key={Math.random()}>
-                                    {/* 
+                                <div className="candlist" key={Math.random()}>
+                                    <ul>
+                                        <li >
+                                            {/* 
                                         > Math.random() because react need unique key to render.
                                         > Using replace() because toAscii() gives other useless characters too.
-                                    */}
-                                    {this.state.web3.toAscii(candidate).replace(/\u0000/g, '')}
-                                </li>
+                                        */}
+                                            <a>
+                                                <img src={candlogo} alt="sano" width="9%" height="5%" />
+                                                <b>
+                                                    {this.state.web3.toAscii(candidate).replace(/\u0000/g, '')}
+                                                </b>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             );
                         })
                     }

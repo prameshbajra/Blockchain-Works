@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "dotenv": "^2.0.0",
+    "materialize-css": "^0.100.2",
     "moment": "^2.20.1",
     "react": "^15.4.2",
     "react-dates": "^16.3.0",

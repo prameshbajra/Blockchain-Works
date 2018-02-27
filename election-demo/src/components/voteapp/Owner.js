@@ -22,7 +22,7 @@ class Owner extends Component {
             startSolDate: null,
             endSolDate: null,
             focusedInput: null,
-            message: "Fill the above form please :D",
+            message: "Fill the above form please.",
         }
     }
 
@@ -103,30 +103,50 @@ class Owner extends Component {
         return (
             <div>
                 <div className={this.state.formVisibility}>
-                    <form onSubmit={this.addCandidate}>
-                        <input type="text" name="candidateName" />
-                        <br />
-                        <button type="submit">Submit</button>
-                    </form>
-                    {
-                        this.state.candidateName ?
-                            (<p>{this.state.candidateName} has been successfully registered. <br />
-                                Total registered candidate : {this.state.candidatesCount}</p>) : null
-                    }
-                    <br />
-                    <CandidateList />
-                    <DateRangePicker
-                        startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-                        startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                        endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-                        endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                        onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
-                        focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                        onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                    />
-                    <button onClick={this.dateHandler}>Start Election</button>
+                    <div className="votebody">
+                        <div className="formlist">
+                            <h3>Add Candidates</h3>
+                            <form className="candidateform" onSubmit={this.addCandidate}>
+                                <input type="text" className="form-control" name="candidateName" placeholder="Enter Candidate Name" />
+                                <br />
+                                <button type="submit" className="btn btn-outline-danger"><a>Submit</a></button>
+                            </form>
+                            {
+                                this.state.candidateName ?
+                                    (<p>{this.state.candidateName} has been successfully registered. <br />
+                                        Total registered candidate : {this.state.candidatesCount}</p>) : null
+                            }
+                            <CandidateList />
+                        </div>
+                        <div className="betweenline"></div>
+                        <div className="dates">
+                            <h5>Select the start date and end date for the election.</h5><br />
+                            <DateRangePicker
+                                startDate={this.state.startDate}
+                                startDateId="your_unique_start_date_id"
+                                endDate={this.state.endDate}
+                                endDateId="your_unique_end_date_id"
+                                onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })}
+                                focusedInput={this.state.focusedInput}
+                                onFocusChange={focusedInput => this.setState({ focusedInput })}
+                            />
+                            <br /><br /><br /><br /><br /><br /><br />
+                            <h6>Note : </h6>
+                            The election will start after you press the button below.<br />
+                            You can further add candidates in case you have forgotten to add them early on. <br />
+                            <br />
+                            <button className="btn btn-outline-danger btn-lg btn-block" onClick={this.dateHandler}>
+                                Start Election
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                {this.state.message}
+                <br />
+                <div className="container">
+                    <div className="card card-body bg-light">
+                        {this.state.message}
+                    </div>
+                </div>
             </div>
         );
     }

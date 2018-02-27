@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 // import Timer from './Timer';
-import '../../css/styles.css';
 import RealEstate from '../../../build/contracts/RealEstate.json';
 import getWeb3 from '../../utils/getWeb3';
 
@@ -102,32 +101,39 @@ class HouseList extends Component {
     render() {
         return (
             <div>
-                Houses for sale
-                <div>
+                <hr/>
+               <h3 className="text-center"> Houses for sale</h3><hr/>
+                <div className = "col-md-6">
                     {
                         this.state.houseArray.map((house, i) => {
                             return (
-                                <div className="box" key={i}>
+                                <div className="card">
+
+                                <div className="card-block" key={i}>
                                     <li key={i + 1}>
-                                        <img alt="Here" />
+                                        {/* <img alt="Here" /> */}
                                         <br />
-                                        Name/Title:
+                                       <b className="card-title"> Name/Title:</b>
                                         {this.state.web3.toAscii(house).replace(/\u0000/g, '')}
                                         <br />
-                                        Location:
+                                        <b className="card-title">Location:</b>
                                         {this.state.web3.toAscii(this.state.locationArray[i]).replace(/\u0000/g, '')}
                                         <br />
-                                        Price:
+                                       <b className="card-title"> Price:</b>
                                         {this.state.priceArray[i]}
+                                        <br/>
                                         {
                                             this.state.web3.toAscii(this.state.buyerArray[i]).replace(/\u0000/g, '') ?
                                                 (<h3>SOLD</h3>) :
-                                                (<button onClick={(e) => this.buyHouse(e, i + 1)}>
+                                                ( <button className = "btn btn-danger " onClick={(e) => this.buyHouse(e, i + 1)}>
                                                     BUY
                                                 </button>)
                                         }
-                                        {this.state.buyerArray[i]}
+                                        <br/>
+                                        <b className="card-title">Current Buyer's Wallet Address:</b><br/> {this.state.buyerArray[i]}
                                     </li>
+                                </div>
+                                    <br/> <br/>
                                 </div>
                             );
                         })

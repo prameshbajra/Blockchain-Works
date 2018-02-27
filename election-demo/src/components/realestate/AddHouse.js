@@ -55,14 +55,26 @@ class AddHouse extends Component {
     render() {
         return (
             <div>
-                Add House for sale ...
-                <form onSubmit={this.addHouse}>
-                    <input type="text" name="houseName" />
-                    <input type="text" name="houseLocation" />
-                    <input type="number" name="housePrice" />
-                    <br />
-                    <button type="submit">Submit</button>
-                </form>
+                <h2 className="text-center"> Add House for sale ... </h2>
+             <div className="houseform">
+                < center>
+                 <form onSubmit={this.addHouse}>
+  <div class="form-group  ">
+
+   HouseName <div className="col-md-4"><input type="text" className="form-control" id="formGroupExampleInput" placeholder="House Name" name="houseName"/>
+  </div></div>
+  <div class="form-group ">
+    <label for="formGroupExampleInput2" >Location</label>
+    <div className="col-md-4"><input type="text" className="form-control" id="formGroupExampleInput2" placeholder="House Location" name="houseLocation" />
+  </div></div>
+  <div class="form-group">
+    <label for="formGroupExampleInput3">Price</label>
+    <div className="col-md-4"><input type="text" className="form-control" id="formGroupExampleInput3" placeholder="Price" name="housePrice" />
+  </div></div>
+   <button type="submit"  className="btn btn-danger btn-lg ">Submit</button>
+</form></center>
+
+                </div>
                 {
                     this.state.houseName ?
                         (<p>{this.state.houseName} has been successfully registered for {this.state.housePrice} wei. <br />

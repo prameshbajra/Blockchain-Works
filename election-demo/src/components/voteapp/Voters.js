@@ -104,26 +104,40 @@ class Voters extends Component {
 
     render() {
         return (
-            <div>
-                <div>
+            <article className="container">
+                <br />
+                <h5 className="text-center">
+                    Here are the list of candidates you can vote for:
+                </h5><br />
+                <article className="row">
                     {
                         this.state.candidateArray.map((candidate, i) => {
                             return (
-                                <li key={i + 1}>
-                                    {this.state.web3.toAscii(candidate).replace(/\u0000/g, '')}
-                                    {
-                                        (<button onClick={(e) => this.voteCandidate(e, i + 1)}>
+                                <div className="col-md-4">
+                                    <div className="card">
+                                        <div className="card-title">
+                                            <h5 className="text-center">
+                                                {this.state.web3.toAscii(candidate).replace(/\u0000/g, '')}
+                                            </h5>
+                                        </div>
+                                        <button className="btn btn-success" onClick={(e) => this.voteCandidate(e, i + 1)}>
                                             Vote
-                                        </button>)
-                                    }
-                                </li>
-                            );
+                                            </button>
+                                    </div><br />
+                                </div>);
                         })
                     }
-                    {this.state.message}
-                </div>
+                </article>
+                {
+                    this.state.message ?
+                        (<p className="text-center">
+                            <div className="card card-body bg-light" >
+                                {this.state.message}
+                            </div>
+                        </p>) : null
+                }
                 <Timer />
-            </div>
+            </article>
         );
     }
 }

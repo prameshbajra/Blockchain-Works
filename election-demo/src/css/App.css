@@ -1,0 +1,185 @@
+.candlist {
+    list-style-type: none;
+    border: 1px solid blueviolet;
+}
+
+.navbar {
+    height: 50px;
+    width: 100%;
+    background-color: black;
+}
+
+.items {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    transition: .3s;
+    z-index: 2;
+}
+
+.navbar li {
+    display: inline-block;
+    padding: 1%;
+}
+
+.navbar li a {
+    text-decoration: none;
+    color: darkgray;
+    font-size: 1.5em;
+    transition: .3s;
+}
+
+.navbar li a:hover {
+    color: azure;
+    font-size: 1.6em;
+}
+
+.active {
+    color: azure;
+    font-size: 1.6em;
+}
+
+.votebody {
+    display: grid;
+    grid-template-columns: 6fr 1fr 6fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 2px;
+    margin: 45px 40px 2px 80px;
+}
+
+.formlist {
+    background-color: #fafafa;
+}
+
+.formlist h3 {
+    margin-left: 35px;
+    margin-top: 15px;
+}
+
+.candidateform {
+    display: flex;
+    justify-content: center;
+    margin: 25px;
+}
+
+.candidateform input[type=text] {
+    width: 100%;
+    height: 40px;
+    border-radius: 4px;
+}
+
+.submitbtn {
+    border-radius: 2px;
+    background-color: white;
+    border: 1px solid lightcoral
+}
+
+.submitbtn a {
+    color: lightcoral;
+}
+
+.submitbtn:hover {
+    background-color: lightcoral
+}
+
+.candlist {
+    background-color: #fafafa;
+    border: 1px solid black;
+    margin-top: 5px;
+}
+
+.candlist li {
+    list-style-type: none;
+    height: 2.5em;
+    display: flex;
+    align-items: center;
+}
+
+.candlist li a {
+    padding-top: 15px;
+    margin-left: -16px;
+}
+
+.betweenline {
+    margin-left: 60px;
+}
+
+.dates {
+    margin: 10px 0px 0px 50px;
+}
+
+.datebutton {
+    width: 32%;
+    height: 40%;
+    border-radius: 50%;
+    margin: 90px 0px 0px 30%;
+}
+
+.listcandidate {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 5px;
+    background-color: azure;
+    width: 50%;
+    display: inline-block;
+    padding: 5px;
+    height: 200px;
+}
+
+.listcandidate li {
+    list-style-type: none;
+    border: 1px solid black;
+    display: block;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.votecand {
+    width: 100%;
+    margin-right: 15px;
+    font-size: 30px;
+}
+
+.listcandidate .btn {
+    margin: 15px 0px 0px 45%;
+}
+
+p {
+    font-size: 25px;
+}
+
+.msg {
+    margin-left: 50px;
+}
+
+.houseform {
+    background-color: snow;
+    margin-top: 20px;
+}
+
+.houseform .btn {
+    margin-top: 20px;
+}
+
+.text-center {
+    margin-top: 15px;
+}
+
+.card li {
+    list-style-type: none;
+}
+
+/* .card {
+    margin-left: 50px;
+} */
+
+/* Pramesh Added ... */
+
+/* img {
+    width: 10rem;
+    height: 12rem;
+} */

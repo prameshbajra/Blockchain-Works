@@ -49,7 +49,7 @@ class Timer extends Component {
             } else if (moment().unix() >= moment(this.state.endDate).unix()) {
                 return (<div><h1>The election has already ended</h1> <Results /></div>);
             }
-            return (<h1>Keep Voting</h1>);
+            return (<h1 className="msg">Keep Voting</h1>);
         } else {
             return (<div><h1>The election has not yet started.</h1></div>);
         }
@@ -58,9 +58,10 @@ class Timer extends Component {
     render() {
         return (
             <div>
+              
                 {
                     this.state.startDate ?
-                        (<p>The election is from {this.state.startDate} and will end in {this.state.endDate}.</p>) : null
+                        (<center><p>The election is from<br/> {this.state.startDate} to {this.state.endDate}.</p></center>) : null
                 }
                 {this.renderMessage()}
             </div >
