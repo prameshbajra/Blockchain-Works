@@ -113,8 +113,8 @@ class Owner extends Component {
                             </form>
                             {
                                 this.state.candidateName ?
-                                    (<p>{this.state.candidateName} has been successfully registered. <br />
-                                        Total registered candidate : {this.state.candidatesCount}</p>) : null
+                                    (<div className="message">{this.state.candidateName} has been successfully registered. <br />
+                                        Total registered candidate : {this.state.candidatesCount}</div>) : null
                             }
                             <CandidateList />
                         </div>

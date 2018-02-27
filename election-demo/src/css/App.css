@@ -13,23 +13,22 @@
     list-style-type: none;
     display: flex;
     justify-content: center;
-    align-items: center;
-    position: fixed;
     width: 100%;
     transition: .3s;
     z-index: 2;
+    margin-top: 12px;
 }
 
 .navbar li {
     display: inline-block;
-    padding: 1%;
+    padding: 1.2%;
 }
 
 .navbar li a {
     text-decoration: none;
     color: darkgray;
     font-size: 1.5em;
-    transition: .3s;
+    transition: .2s;
 }
 
 .navbar li a:hover {
@@ -173,7 +172,20 @@ p {
     list-style-type: none;
 }
 
-/* .card {
+.betweenline {
+    border: 1.5px dashed gainsboro;
+    width: 2px;
+    height: 100%;
+}
+
+.message {
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    padding-bottom: 13px;
+}
+
+/* card {
     margin-left: 50px;
 } */
 

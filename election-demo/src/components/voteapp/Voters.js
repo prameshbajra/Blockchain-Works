@@ -106,9 +106,12 @@ class Voters extends Component {
         return (
             <article className="container">
                 <br />
-                <h5 className="text-center">
-                    Here are the list of candidates you can vote for:
-                </h5><br />
+                {this.state.candidateArray.length > 0 ?
+                    (<h5 className="text-center">
+                        Here are the list of candidates you can vote for:
+                </h5>) : null
+                }
+                <br />
                 <article className="row">
                     {
                         this.state.candidateArray.map((candidate, i) => {
@@ -122,7 +125,7 @@ class Voters extends Component {
                                         </div>
                                         <button className="btn btn-success" onClick={(e) => this.voteCandidate(e, i + 1)}>
                                             Vote
-                                            </button>
+                                        </button>
                                     </div><br />
                                 </div>);
                         })

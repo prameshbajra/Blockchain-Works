@@ -66,30 +66,51 @@ class Results extends Component {
     render() {
         return (
             <div>
+                <hr />
                 {
                     this.state.buttonVisible ?
-                        <button onClick={this.viewAllCandidates}>View ...Results</button> :
-                        <div>
-                            {
-                                this.state.candidateNameArray.map((name, i) => {
-                                    return (
-                                        <h3 key={i}>
-                                            {this.state.web3.toAscii(name).replace(/\u0000/g, '')} ------>
-                                            {this.state.candidateVotesArray[i]}
-                                        </h3>
-                                    )
-                                })
-                            }
-                            <button onClick={this.winner}>
-                                See winner
-                            </button>
-                        </div>
+                        <h3 className="text-center">
+                            <button className="btn btn-outline-success" onClick={this.viewAllCandidates}>
+                                View Full Results
+                        </button>
+                        </h3> :
+                        (
+                            <div className="row">
+                                <br />
+                                <div className="col-md-3"></div>
+                                <div className="col-md-6">
+                                    <ul className="list-group">
+                                        {
+                                            this.state.candidateNameArray.map((name, i) => {
+                                                return (
+                                                    <li className="list-group-item d-flex justify-content-between align-items-center list-group-item-success"
+                                                        key={i}>
+                                                        <h5>
+                                                            {this.state.web3.toAscii(name).replace(/\u0000/g, '')}
+                                                        </h5>
+                                                        <span className="badge badge-success badge-pill">
+                                                            {this.state.candidateVotesArray[i]}
+                                                        </span>
+                                                    </li>
+                                                )
+                                            })
+                                        }
+                                        <br /><br />
+                                        <button className="btn btn-outline-success" onClick={this.winner}>
+                                            See winner
+                                        </button>
+                                    </ul>
+                                </div>
+                            </div>
+                        )
                 }
+                <hr />
                 {
                     this.state.winCandidate ?
-                        <div>Congratulations! {this.state.winCandidate} won the election by {this.state.winVotes} votes.</div> :
+                        <h4 className="text-center">Congratulations! {this.state.winCandidate} won the election by {this.state.winVotes} votes.</h4> :
                         null
                 }
+                <br /><br />
             </div>
         );
     }
