@@ -89,10 +89,10 @@ class HouseList extends Component {
                         // console.log(parseFloat(price).toFixed(18));
                         return realEstateContractInstance.buy(id, { value: price, from: accounts[0] });
                     }).then((result) => {
-                        this.setState(() => ({ message: "transaction complete." }));
+                        this.setState(() => ({ message: "Transaction complete." }));
                     }).catch((error) => {
                         console.log("error", error);
-                        this.setState(() => ({ message: "transaction error." }))
+                        this.setState(() => ({ message: "Transaction error." }))
                     })
             })
         })
@@ -100,47 +100,48 @@ class HouseList extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <hr />
                 <h3 className="text-center"> Houses for sale</h3><hr />
-                <div className="col-md-6">
+                <div className="row">
                     {
                         this.state.houseArray.map((house, i) => {
                             return (
-                                <div className="card">
-
-                                    <div className="card-block" key={i}>
-                                        <li key={i + 1}>
-                                            {/* <img alt="Here" /> */}
-                                            <br />
-                                            <b className="card-title"> Name/Title:</b>
-                                            {this.state.web3.toAscii(house).replace(/\u0000/g, '')}
-                                            <br />
-                                            <b className="card-title">Location:</b>
-                                            {this.state.web3.toAscii(this.state.locationArray[i]).replace(/\u0000/g, '')}
-                                            <br />
-                                            <b className="card-title"> Price:</b>
-                                            {this.state.priceArray[i]}
-                                            <br />
-                                            {
-                                                this.state.web3.toAscii(this.state.buyerArray[i]).replace(/\u0000/g, '') ?
-                                                    (<h3>SOLD</h3>) :
-                                                    (<button className="btn btn-danger " onClick={(e) => this.buyHouse(e, i + 1)}>
-                                                        BUY
+                                <div className="col-md-4">
+                                    <div className="card container" >
+                                        <br />
+                                        <h6 className="card-title">
+                                            Name : {this.state.web3.toAscii(house).replace(/\u0000/g, '')} <br />
+                                            Location : {this.state.web3.toAscii(this.state.locationArray[i]).replace(/\u0000/g, '')} <br />
+                                            Price : {this.state.priceArray[i]} <br />
+                                            Current Buyer's Wallet Address: <br />
+                                        </h6>
+                                        {this.state.buyerArray[i]}
+                                        <br /><br />
+                                        {
+                                            this.state.web3.toAscii(this.state.buyerArray[i]).replace(/\u0000/g, '') ?
+                                                (<h3>SOLD</h3>) :
+                                                (<button className="btn btn-danger" onClick={(e) => this.buyHouse(e, i + 1)}>
+                                                    BUY
                                                 </button>)
-                                            }
-                                            <br />
-                                            <b className="card-title">Current Buyer's Wallet Address:</b><br /> {this.state.buyerArray[i]}
-                                        </li>
+                                        }
+                                        <br />
                                     </div>
                                     <br /> <br />
                                 </div>
                             );
                         })
                     }
-                    {this.state.message}
                 </div>
-                {/* <Timer /> */}
+                {
+                    this.state.message ?
+                        (<p className="text-center">
+                            <div className="card card-body bg-light" >
+                                {this.state.message} <br />
+                                <h6>(Please refresh the page to see latest changes)</h6>
+                            </div>
+                        </p>) : null
+                }
             </div>
         );
     }

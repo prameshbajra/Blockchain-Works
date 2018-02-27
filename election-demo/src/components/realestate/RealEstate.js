@@ -36,11 +36,13 @@ class RealEstates extends Component {
             <div>
                 <div className="navbar">
                     <ul className="items">
-                        <li className="item"><a href="#gotoDashboard">Dashboard</a></li>
-                        <li className="item ">
-                            <a className="active" href="#home">Home</a>
+                        <li className="item">
+                            <a className="item" href="/">Home</a>
                         </li>
-                        <li className="item"><a href="#aboutus">About</a></li>
+                        <li className="item ">
+                            <a href="/">Dashboard</a>
+                        </li>
+                        <li className="item"><a href="">About</a></li>
                     </ul>
                 </div>
                 <AddHouse />
