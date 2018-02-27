@@ -101,39 +101,39 @@ class HouseList extends Component {
     render() {
         return (
             <div>
-                <hr/>
-               <h3 className="text-center"> Houses for sale</h3><hr/>
-                <div className = "col-md-6">
+                <hr />
+                <h3 className="text-center"> Houses for sale</h3><hr />
+                <div className="col-md-6">
                     {
                         this.state.houseArray.map((house, i) => {
                             return (
                                 <div className="card">
 
-                                <div className="card-block" key={i}>
-                                    <li key={i + 1}>
-                                        {/* <img alt="Here" /> */}
-                                        <br />
-                                       <b className="card-title"> Name/Title:</b>
-                                        {this.state.web3.toAscii(house).replace(/\u0000/g, '')}
-                                        <br />
-                                        <b className="card-title">Location:</b>
-                                        {this.state.web3.toAscii(this.state.locationArray[i]).replace(/\u0000/g, '')}
-                                        <br />
-                                       <b className="card-title"> Price:</b>
-                                        {this.state.priceArray[i]}
-                                        <br/>
-                                        {
-                                            this.state.web3.toAscii(this.state.buyerArray[i]).replace(/\u0000/g, '') ?
-                                                (<h3>SOLD</h3>) :
-                                                ( <button className = "btn btn-danger " onClick={(e) => this.buyHouse(e, i + 1)}>
-                                                    BUY
+                                    <div className="card-block" key={i}>
+                                        <li key={i + 1}>
+                                            {/* <img alt="Here" /> */}
+                                            <br />
+                                            <b className="card-title"> Name/Title:</b>
+                                            {this.state.web3.toAscii(house).replace(/\u0000/g, '')}
+                                            <br />
+                                            <b className="card-title">Location:</b>
+                                            {this.state.web3.toAscii(this.state.locationArray[i]).replace(/\u0000/g, '')}
+                                            <br />
+                                            <b className="card-title"> Price:</b>
+                                            {this.state.priceArray[i]}
+                                            <br />
+                                            {
+                                                this.state.web3.toAscii(this.state.buyerArray[i]).replace(/\u0000/g, '') ?
+                                                    (<h3>SOLD</h3>) :
+                                                    (<button className="btn btn-danger " onClick={(e) => this.buyHouse(e, i + 1)}>
+                                                        BUY
                                                 </button>)
-                                        }
-                                        <br/>
-                                        <b className="card-title">Current Buyer's Wallet Address:</b><br/> {this.state.buyerArray[i]}
-                                    </li>
-                                </div>
-                                    <br/> <br/>
+                                            }
+                                            <br />
+                                            <b className="card-title">Current Buyer's Wallet Address:</b><br /> {this.state.buyerArray[i]}
+                                        </li>
+                                    </div>
+                                    <br /> <br />
                                 </div>
                             );
                         })

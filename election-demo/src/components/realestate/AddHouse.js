@@ -54,35 +54,41 @@ class AddHouse extends Component {
 
     render() {
         return (
-            <div>
-                <h2 className="text-center"> Add House for sale ... </h2>
-             <div className="houseform">
-                < center>
-                 <form onSubmit={this.addHouse}>
-  <div class="form-group  ">
-
-   HouseName <div className="col-md-4"><input type="text" className="form-control" id="formGroupExampleInput" placeholder="House Name" name="houseName"/>
-  </div></div>
-  <div class="form-group ">
-    <label for="formGroupExampleInput2" >Location</label>
-    <div className="col-md-4"><input type="text" className="form-control" id="formGroupExampleInput2" placeholder="House Location" name="houseLocation" />
-  </div></div>
-  <div class="form-group">
-    <label for="formGroupExampleInput3">Price</label>
-    <div className="col-md-4"><input type="text" className="form-control" id="formGroupExampleInput3" placeholder="Price" name="housePrice" />
-  </div></div>
-   <button type="submit"  className="btn btn-danger btn-lg ">Submit</button>
-</form></center>
-
+            <div className="container">
+                <br /><br />
+                <div className="row">
+                    <div className="col-md-6">
+                        <h2>Enter details for the house to sell. </h2>
+                        <br />
+                        <form onSubmit={this.addHouse}>
+                            <br />
+                            <h5>House Name</h5>
+                            <input type="text" className="form-control" id="inlineFormInputGroupUsername" placeholder="Enter house name" name="houseName" />
+                            <br />
+                            <h5>House Location</h5>
+                            <input type="text" className="form-control" id="formGroupExampleInput2" placeholder="Enter House Location" name="houseLocation" />
+                            <br />
+                            <h5>House Price</h5>
+                            <input type="text" className="form-control" id="formGroupExampleInput3" placeholder="Enter Price" name="housePrice" />
+                            <br />
+                            <button type="submit" className="btn btn-outline-danger btn-block">Submit</button>
+                            <br />
+                        </form>
+                    </div>
+                    <br /><br /><br />
+                    <div className="col-md-6">
+                        {
+                            this.state.houseName ?
+                                (<div className="card card-body bg-light">{this.state.houseName} has been successfully registered.
+                                <br />
+                                    Total registered houses : {this.state.houseCount}</div>) : null
+                        }
+                        <br />
+                        <div className="card card-body bg-light">
+                            {this.state.message}
+                        </div>
+                    </div>
                 </div>
-                {
-                    this.state.houseName ?
-                        (<p>{this.state.houseName} has been successfully registered for {this.state.housePrice} wei. <br />
-                            Total registered houses : {this.state.houseCount}</p>) : null
-                }
-                <br />
-                {/* <CandidateList /> */}
-                {this.state.message}
             </div>
         );
     }
