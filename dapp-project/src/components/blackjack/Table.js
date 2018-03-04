@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import _ from 'underscore';
+import _ from 'lodash';
 
 import Hand from "./Hand";
 import Interface from "./Interface";
@@ -9,22 +9,24 @@ class Table extends Component {
         super(props);
         this.state = {
             deck: _.shuffle(this.props.deck),
-            playerScore: 0,
-            dealerScore: 0,
+            player: [],
+            dealer: [],
             status: null
         };
     }
 
     handScore = (hand) => {
-        let score = _.reduce(hand, function (sum, num) { return sum + num }, 0);
+        var score = _.sumBy(hand, 'v');
+
         if (score > 21) {
             //check for aces
-            let aces = _.countBy(hand, { v: 11 }).true;
+            var aces = _.countBy(hand, { v: 11 }).true;
             while (score > 21 && aces > 0) {
                 score -= 10;
                 aces -= 1;
             }
         }
+
         return score;
     }
 
@@ -46,7 +48,8 @@ class Table extends Component {
         deck.pop();
 
         //dealer card
-        //since we are using client side state the dealer secret card is only popped out of the deal at the time the user clicks Stand.
+        // since we are using client side state the dealer secret card is only popped out
+        // of the deal at the time the user clicks Stand.
         dealerhand.push(deck.pop());
 
         //set the updates
@@ -74,9 +77,8 @@ class Table extends Component {
         playerHand.push(shuffled.pop());
 
         const newPlayerscore = this.handScore(playerHand);
-
         // five card charlie
-        if (newPlayerscore < 21 && playerHand.length == 5)
+        if (newPlayerscore < 21 && playerHand.length === 5)
             newStatus = "win";
         if (newPlayerscore > 21)
             newStatus = "lose";
@@ -112,7 +114,7 @@ class Table extends Component {
             dealerHand.push(shuffled.pop());
             dealerScore = this.handScore(dealerHand);
 
-            if (dealerScore < 21 && dealerHand.length == 5) {
+            if (dealerScore < 21 && dealerHand.length === 5) {
                 // five card charlie
                 dealerHasCharlie = true;
                 break;

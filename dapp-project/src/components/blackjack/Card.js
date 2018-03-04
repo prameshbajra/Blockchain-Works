@@ -3,11 +3,13 @@ import React, { Component } from 'react';
 class Card extends Component {
     render() {
         const bgUrl = (this.props.hidden)
-            ? 'url(img/hidden.png)'
-            : 'url(img/' + this.props.face + '.png)';
-        const cardStyle = { backgroundImage: bgUrl };
+            ? '../../images/hidden.png'
+            : '../../images/' + this.props.face + '.png';
         return (
-            <div className='card' style={cardStyle} />
+            <div>
+                {bgUrl}
+                <img alt="" src={bgUrl} />
+            </div>
         );
     }
 }

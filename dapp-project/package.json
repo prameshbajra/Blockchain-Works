@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "dotenv": "^2.0.0",
+    "lodash": "^4.17.5",
     "materialize-css": "^0.100.2",
     "moment": "^2.20.1",
     "react": "^15.4.2",
