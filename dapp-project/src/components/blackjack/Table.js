@@ -16,8 +16,7 @@ class Table extends Component {
     }
 
     handScore = (hand) => {
-        var score = _.sumBy(hand, 'v');
-
+        let score = _.sumBy(hand, 'v');
         if (score > 21) {
             //check for aces
             var aces = _.countBy(hand, { v: 11 }).true;
@@ -26,7 +25,6 @@ class Table extends Component {
                 aces -= 1;
             }
         }
-
         return score;
     }
 
@@ -34,7 +32,6 @@ class Table extends Component {
         let deck = this.state.deck;
         const playerhand = [];
         const dealerhand = [];
-
         //check deck size to see if we need to shuffle a new deck
         if (deck.length < 5) {
             deck = _.shuffle(this.props.deck);
