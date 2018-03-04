@@ -25,7 +25,7 @@ class BlackJack extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="container">
                 <Table deck={this.shuffleDeck(this.state.deck)} />
             </div>
         );
