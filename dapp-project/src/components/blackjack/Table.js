@@ -124,7 +124,7 @@ class Table extends Component {
             dealer: dealerHand,
             deck: shuffled,
             // compute game status
-            status: (dealerScore < 21 || dealerHasCharlie) ? 'lose' : 'win'
+            status: (dealerScore <= 21 || dealerHasCharlie) ? 'lose' : 'win'
         });
     }
 

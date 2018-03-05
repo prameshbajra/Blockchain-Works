@@ -12,13 +12,14 @@ import {
 class Card extends Component {
     render() {
         return (
-            <div className="container">
+            <div>
                 {
                     this.props.hidden ?
                         (<img src={hidden} alt="" />) :
                         (<img src={this.props.face} alt="" />)
                 }
                 {this.props.value}
+                <hr /><hr />
             </div>
         );
     }
