@@ -19,7 +19,6 @@ class Card extends Component {
                         (<img src={this.props.face} alt="" />)
                 }
                 {this.props.value}
-                <hr /><hr />
             </div>
         );
     }
