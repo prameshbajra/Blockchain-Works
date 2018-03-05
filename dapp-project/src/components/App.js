@@ -7,7 +7,6 @@ import BlackJack from './blackjack/BlackJack';
 import NotFound from './voteapp/NotFound';
 
 import '../css/App.css';
-import '../css/BlackJack.css';
 
 class App extends Component {
     render() {
