@@ -19,7 +19,6 @@ class Interface extends Component {
                 <br />
                 <div className="btn-group btn-group-justified" role="group" aria-label="game">
                     <div className="btn-group" role="group">
-                        {/* received as props to the Interface component the handleDeal function is now bound to the onClick event */}
                         <button onClick={this.props.deal} type="button" className="btn btn-info">Deal</button>
                     </div>
                     <div className="btn-group" role="group">
