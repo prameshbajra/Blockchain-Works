@@ -11,6 +11,7 @@ class Table extends Component {
             deck: _.shuffle(this.props.deck),
             player: [],
             dealer: [],
+            hidden: true,
             status: null
         };
     }
@@ -36,7 +37,6 @@ class Table extends Component {
         if (deck.length < 5) {
             deck = _.shuffle(this.props.deck);
         }
-
         //player hand, deal 2 cards
         playerhand.push(deck.pop());
         playerhand.push(deck.pop());
@@ -54,6 +54,7 @@ class Table extends Component {
             player: playerhand,
             dealer: dealerhand,
             deck: deck,
+            hidden: true,
             status: "playing"
         });
     }
@@ -123,6 +124,7 @@ class Table extends Component {
         this.setState({
             dealer: dealerHand,
             deck: shuffled,
+            hidden: false,
             // compute game status
             status: (dealerScore <= 21 || dealerHasCharlie) ? 'lose' : 'win'
         });
@@ -132,9 +134,10 @@ class Table extends Component {
         return (
             <div className='table-board'>
                 <Hand
-                    showDeck={true}
+                    showDeck={this.state.hidden}
                     hand={this.state.dealer}
                 />
+                <hr />
                 <Interface
                     playerscore={this.handScore(this.state.player)}
                     dealerscore={this.handScore(this.state.dealer)}
@@ -143,6 +146,7 @@ class Table extends Component {
                     stand={this.handleStandButton}
                     status={this.state.status}
                 />
+                <hr />
                 <Hand
                     hand={this.state.player}
                 />

@@ -9,23 +9,38 @@ class Interface extends Component {
 
     render() {
         return (
-            <div className='panel interface'>
+            <div>
                 {/* Outcome component child of Interface */}
-                <Outcome status={this.props.status} />
-                <div className="btn-group btn-group-justified" role="group" aria-label="score">
-                    <a className="btn btn-default">Dealer Score : {this.props.dealerscore}</a>
-                    <a className="btn btn-default">Player Score :{this.props.playerscore}</a>
+                <center>
+                    <Outcome status={this.props.status} />
+                </center>
+                <div className="row">
+                    <div className="col-lg-6 col-md-6">
+                        <h4>Dealer Score : {this.props.dealerscore}</h4>
+                    </div>
+                    <div className="col-lg-6 col-md-6">
+                        <h4 className="text-right">Player Score : {this.props.playerscore}</h4>
+                    </div>
                 </div>
                 <br />
-                <div className="btn-group btn-group-justified" role="group" aria-label="game">
-                    <div className="btn-group" role="group">
-                        <button onClick={this.props.deal} type="button" className="btn btn-info">Deal</button>
+                <div className="row">
+                    <div className="col-lg-4 col-md-4">
+                        <button onClick={this.props.deal} type="button" className="btn btn-block btn-info">Deal</button>
                     </div>
-                    <div className="btn-group" role="group">
-                        <button onClick={this.props.hit} type="button" className="btn btn-success">Hit</button>
+                    <div className="col-lg-4 col-md-4">
+                        {
+                            this.props.playerscore <= 21 ?
+                                <button onClick={this.props.hit} type="button" className="btn btn-block btn-success">
+                                    Hit
+                                </button>
+                                :
+                                <button onClick={this.props.hit} type="button" className="btn btn-block btn-success" disabled>
+                                    Hit
+                                </button>
+                        }
                     </div>
-                    <div className="btn-group" role="group">
-                        <button onClick={this.props.stand} type="button" className="btn btn-danger">Stand</button>
+                    <div className="col-lg-4 col-md-4">
+                        <button onClick={this.props.stand} type="button" className="btn btn-block btn-danger">Stand</button>
                     </div>
                 </div>
             </div>
