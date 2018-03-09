@@ -1,0 +1,66 @@
+exports[`test should render NoMatch component 1`] = `
+<div
+  className="container">
+  <br />
+  <br />
+  <div
+    className="row">
+    <div
+      className="col-md-6">
+      <h2>
+        Enter details for the house to sell. 
+      </h2>
+      <br />
+      <form
+        onSubmit={[Function]}>
+        <br />
+        <h5>
+          House Name
+        </h5>
+        <input
+          className="form-control"
+          id="inlineFormInputGroupUsername"
+          name="houseName"
+          placeholder="Enter house name"
+          type="text" />
+        <br />
+        <h5>
+          House Location
+        </h5>
+        <input
+          className="form-control"
+          id="formGroupExampleInput2"
+          name="houseLocation"
+          placeholder="Enter House Location"
+          type="text" />
+        <br />
+        <h5>
+          House Price
+        </h5>
+        <input
+          className="form-control"
+          id="formGroupExampleInput3"
+          name="housePrice"
+          placeholder="Enter Price"
+          type="text" />
+        <br />
+        <button
+          className="btn btn-outline-danger btn-block"
+          type="submit">
+          Submit
+        </button>
+        <br />
+      </form>
+    </div>
+    <br />
+    <br />
+    <br />
+    <div
+      className="col-md-6">
+      <br />
+      <div
+        className="card card-body bg-light" />
+    </div>
+  </div>
+</div>
+`;

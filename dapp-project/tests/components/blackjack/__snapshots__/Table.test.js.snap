@@ -1,0 +1,19 @@
+exports[`test should render NoMatch component 1`] = `
+<div
+  className="table-board">
+  <Hand
+    hand={Array []}
+    showDeck={true} />
+  <hr />
+  <Interface
+    deal={[Function]}
+    dealerscore={0}
+    hit={[Function]}
+    playerscore={0}
+    stand={[Function]}
+    status={null} />
+  <hr />
+  <Hand
+    hand={Array []} />
+</div>
+`;

@@ -1,0 +1,218 @@
+exports[`test should render NoMatch component 1`] = `
+<div
+  className="container">
+  <Table
+    deck={
+      Array [
+        Object {
+          "f": "c2",
+          "v": 2,
+        },
+        Object {
+          "f": "d10",
+          "v": 10,
+        },
+        Object {
+          "f": "s4",
+          "v": 4,
+        },
+        Object {
+          "f": "h7",
+          "v": 7,
+        },
+        Object {
+          "f": "d6",
+          "v": 6,
+        },
+        Object {
+          "f": "c6",
+          "v": 6,
+        },
+        Object {
+          "f": "h3",
+          "v": 3,
+        },
+        Object {
+          "f": "s2",
+          "v": 2,
+        },
+        Object {
+          "f": "h12",
+          "v": 10,
+        },
+        Object {
+          "f": "h2",
+          "v": 2,
+        },
+        Object {
+          "f": "h6",
+          "v": 6,
+        },
+        Object {
+          "f": "c3",
+          "v": 3,
+        },
+        Object {
+          "f": "c1",
+          "v": 11,
+        },
+        Object {
+          "f": "h9",
+          "v": 9,
+        },
+        Object {
+          "f": "c11",
+          "v": 10,
+        },
+        Object {
+          "f": "c9",
+          "v": 9,
+        },
+        Object {
+          "f": "s10",
+          "v": 10,
+        },
+        Object {
+          "f": "s7",
+          "v": 7,
+        },
+        Object {
+          "f": "d12",
+          "v": 10,
+        },
+        Object {
+          "f": "d9",
+          "v": 9,
+        },
+        Object {
+          "f": "d11",
+          "v": 10,
+        },
+        Object {
+          "f": "s9",
+          "v": 9,
+        },
+        Object {
+          "f": "d7",
+          "v": 7,
+        },
+        Object {
+          "f": "d2",
+          "v": 2,
+        },
+        Object {
+          "f": "h11",
+          "v": 10,
+        },
+        Object {
+          "f": "s3",
+          "v": 3,
+        },
+        Object {
+          "f": "h8",
+          "v": 8,
+        },
+        Object {
+          "f": "h4",
+          "v": 4,
+        },
+        Object {
+          "f": "h1",
+          "v": 11,
+        },
+        Object {
+          "f": "s1",
+          "v": 11,
+        },
+        Object {
+          "f": "c4",
+          "v": 4,
+        },
+        Object {
+          "f": "c8",
+          "v": 8,
+        },
+        Object {
+          "f": "d13",
+          "v": 10,
+        },
+        Object {
+          "f": "s11",
+          "v": 10,
+        },
+        Object {
+          "f": "s5",
+          "v": 5,
+        },
+        Object {
+          "f": "d3",
+          "v": 3,
+        },
+        Object {
+          "f": "c7",
+          "v": 7,
+        },
+        Object {
+          "f": "h13",
+          "v": 10,
+        },
+        Object {
+          "f": "c10",
+          "v": 10,
+        },
+        Object {
+          "f": "c12",
+          "v": 10,
+        },
+        Object {
+          "f": "s12",
+          "v": 10,
+        },
+        Object {
+          "f": "c13",
+          "v": 10,
+        },
+        Object {
+          "f": "s8",
+          "v": 8,
+        },
+        Object {
+          "f": "d1",
+          "v": 11,
+        },
+        Object {
+          "f": "s13",
+          "v": 10,
+        },
+        Object {
+          "f": "h5",
+          "v": 5,
+        },
+        Object {
+          "f": "h10",
+          "v": 10,
+        },
+        Object {
+          "f": "d4",
+          "v": 4,
+        },
+        Object {
+          "f": "s6",
+          "v": 6,
+        },
+        Object {
+          "f": "d5",
+          "v": 5,
+        },
+        Object {
+          "f": "d8",
+          "v": 8,
+        },
+        Object {
+          "f": "c5",
+          "v": 5,
+        },
+      ]
+    } />
+</div>
+`;
