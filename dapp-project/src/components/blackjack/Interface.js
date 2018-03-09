@@ -29,9 +29,14 @@ class Interface extends Component {
                     </div>
                     <div className="col-lg-4 col-md-4">
                         {
-                            this.props.playerscore <= 21 ?
-                                <button onClick={this.props.hit} type="button" className="btn btn-block btn-success">
-                                    Hit
+                            this.props.visible ?
+                                this.props.playerscore > 21 || this.props.dealerscore > 21 ?
+                                    <button onClick={this.props.hit} type="button" className="btn btn-block btn-success" disabled>
+                                        Hit
+                                </button>
+                                    :
+                                    <button onClick={this.props.hit} type="button" className="btn btn-block btn-success">
+                                        Hit
                                 </button>
                                 :
                                 <button onClick={this.props.hit} type="button" className="btn btn-block btn-success" disabled>
@@ -40,7 +45,21 @@ class Interface extends Component {
                         }
                     </div>
                     <div className="col-lg-4 col-md-4">
-                        <button onClick={this.props.stand} type="button" className="btn btn-block btn-danger">Stand</button>
+                        {
+                            this.props.visible ?
+                                this.props.playerscore > 21 || this.props.dealerscore > 21 ?
+                                    <button onClick={this.props.stand} type="button" className="btn btn-block btn-danger" disabled>
+                                        Stand
+                                </button>
+                                    :
+                                    <button onClick={this.props.stand} type="button" className="btn btn-block btn-danger">
+                                        Stand
+                                </button>
+                                :
+                                <button onClick={this.props.stand} type="button" className="btn btn-block btn-danger" disabled>
+                                    Stand
+                                </button>
+                        }
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@ import toJSON from 'enzyme-to-json';
 
 import Hand from '../../../src/components/blackjack/Hand';
 
-test('should render NoMatch component', () => {
+test('should render Hand component', () => {
     const wrapper = shallow(<Hand />);
     expect(toJSON(wrapper)).toMatchSnapshot();
 });

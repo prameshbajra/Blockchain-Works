@@ -12,6 +12,7 @@ class Table extends Component {
             player: [],
             dealer: [],
             hidden: true,
+            visible: false,
             status: null
         };
     }
@@ -55,6 +56,7 @@ class Table extends Component {
             dealer: dealerhand,
             deck: deck,
             hidden: true,
+            visible: true,
             status: "playing"
         });
     }
@@ -126,6 +128,7 @@ class Table extends Component {
             deck: shuffled,
             hidden: false,
             // compute game status
+            visible: false,
             status: (dealerScore <= 21 || dealerHasCharlie) ? 'lose' : 'win'
         });
     }
@@ -145,6 +148,7 @@ class Table extends Component {
                     hit={this.handleHitButton}
                     stand={this.handleStandButton}
                     status={this.state.status}
+                    visible={this.state.visible}
                 />
                 <hr />
                 <Hand

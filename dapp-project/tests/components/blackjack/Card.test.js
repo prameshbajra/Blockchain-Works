@@ -4,7 +4,7 @@ import toJSON from 'enzyme-to-json';
 
 import Card from '../../../src/components/blackjack/Card';
 
-test('should render NoMatch component', () => {
+test('should render card component', () => {
     const wrapper = shallow(<Card />);
     expect(toJSON(wrapper)).toMatchSnapshot();
 });

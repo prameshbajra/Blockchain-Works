@@ -4,7 +4,7 @@ import toJSON from 'enzyme-to-json';
 
 import Interface from '../../../src/components/blackjack/Interface';
 
-test('should render NoMatch component', () => {
+test('should render Interface component', () => {
     const wrapper = shallow(<Interface />);
     expect(toJSON(wrapper)).toMatchSnapshot();
 });
