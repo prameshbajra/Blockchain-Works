@@ -1,0 +1,16 @@
+exports[`test should render NoMatch component 1`] = `
+<div>
+  <hr />
+  <h3
+    className="text-center">
+    <button
+      className="btn btn-outline-success"
+      onClick={[Function]}>
+      View Full Results
+    </button>
+  </h3>
+  <hr />
+  <br />
+  <br />
+</div>
+`;

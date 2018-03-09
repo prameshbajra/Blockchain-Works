@@ -1,0 +1,33 @@
+exports[`test should render NoMatch component 1`] = `
+<div>
+  <div
+    className="navbar">
+    <ul
+      className="items">
+      <li
+        className="item">
+        <a
+          className="item"
+          href="/">
+          Home
+        </a>
+      </li>
+      <li
+        className="item ">
+        <a
+          href="/">
+          Dashboard
+        </a>
+      </li>
+      <li
+        className="item">
+        <a
+          href="">
+          About
+        </a>
+      </li>
+    </ul>
+  </div>
+  <Voters />
+</div>
+`;

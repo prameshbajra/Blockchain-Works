@@ -1,4 +1,4 @@
-exports[`test should render NoMatch component 1`] = `
+exports[`test should render NotFound component 1`] = `
 <h1
   className="text-center">
   <br />

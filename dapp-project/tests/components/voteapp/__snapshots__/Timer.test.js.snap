@@ -1,0 +1,9 @@
+exports[`test should render NoMatch component 1`] = `
+<div>
+  <div>
+    <h1>
+      The election has not yet started.
+    </h1>
+  </div>
+</div>
+`;

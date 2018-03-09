@@ -1,0 +1,108 @@
+exports[`test should render Owner component 1`] = `
+<div>
+  <div>
+    <div
+      className="votebody">
+      <div
+        className="formlist">
+        <h3>
+          Add Candidates
+        </h3>
+        <form
+          className="candidateform"
+          onSubmit={[Function]}>
+          <input
+            className="form-control"
+            name="candidateName"
+            placeholder="Enter Candidate Name"
+            type="text" />
+          <br />
+          <button
+            className="btn btn-outline-danger"
+            type="submit">
+            <a>
+              Submit
+            </a>
+          </button>
+        </form>
+        <CandidateList />
+      </div>
+      <div
+        className="betweenline" />
+      <div
+        className="dates">
+        <h5>
+          Select the start date and end date for the election.
+        </h5>
+        <br />
+        <withStyles(DateRangePicker)
+          block={false}
+          customArrowIcon={null}
+          customCloseIcon={null}
+          customInputIcon={null}
+          disabled={false}
+          enableOutsideDays={false}
+          endDate={null}
+          endDateId="your_unique_end_date_id"
+          firstDayOfWeek={null}
+          focusedInput={null}
+          hideKeyboardShortcutsPanel={false}
+          horizontalMargin={0}
+          initialVisibleMonth={null}
+          isRTL={false}
+          keepFocusOnInput={false}
+          keepOpenOnDateSelect={false}
+          navNext={null}
+          navPrev={null}
+          noBorder={false}
+          onDatesChange={[Function]}
+          onFocusChange={[Function]}
+          readOnly={false}
+          regular={false}
+          renderCalendarInfo={null}
+          renderDayContents={null}
+          renderMonth={null}
+          reopenPickerOnClearDates={false}
+          required={false}
+          screenReaderInputMessage=""
+          showClearDates={false}
+          showDefaultInputIcon={false}
+          small={false}
+          startDate={null}
+          startDateId="your_unique_start_date_id"
+          verticalHeight={null}
+          withFullScreenPortal={false}
+          withPortal={false} />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <h6>
+          Note : 
+        </h6>
+        The election will start after you press the button below.
+        <br />
+        You can further add candidates in case you have forgotten to add them early on. 
+        <br />
+        <br />
+        <button
+          className="btn btn-outline-danger btn-lg btn-block"
+          onClick={[Function]}>
+          Start Election
+        </button>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div
+    className="container">
+    <div
+      className="card card-body bg-light">
+      Fill the above form please.
+    </div>
+  </div>
+</div>
+`;

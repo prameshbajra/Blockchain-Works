@@ -1,0 +1,10 @@
+exports[`test should render NoMatch component 1`] = `
+<article
+  className="container">
+  <br />
+  <br />
+  <article
+    className="row" />
+  <Timer />
+</article>
+`;
