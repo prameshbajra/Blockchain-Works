@@ -13,7 +13,7 @@ class Table extends Component {
             dealer: [],
             hidden: true,
             visible: false,
-            status: null
+            status: "new"
         };
     }
 

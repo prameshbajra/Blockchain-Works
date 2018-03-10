@@ -4,7 +4,7 @@ class Outcome extends Component {
     static defaultProps = {
         status: "playing"
     }
-
+    static status
     render() {
         switch (this.props.status) {
             case "playing":
@@ -18,5 +18,6 @@ class Outcome extends Component {
         }
     }
 }
+
 
 export default Outcome;
