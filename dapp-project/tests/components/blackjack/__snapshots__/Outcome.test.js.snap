@@ -1,15 +1,7 @@
-exports[`test should render NoMatch component 1`] = `
-<div
-  className="alert alert-info"
-  role="alert">
-  Hit or Stand
-</div>
-`;
-
 exports[`test should render Outcome component 1`] = `
 <div
   className="alert alert-info"
   role="alert">
-  Hit or Stand
+   Hit or Stand
 </div>
 `;

@@ -8,21 +8,21 @@ exports[`test should render NoMatch component 1`] = `
         className="item">
         <a
           className="item"
-          href="/">
+          href="#">
           Home
         </a>
       </li>
       <li
         className="item ">
         <a
-          href="/">
+          href="#">
           Dashboard
         </a>
       </li>
       <li
         className="item">
         <a
-          href="">
+          href="#">
           About
         </a>
       </li>
