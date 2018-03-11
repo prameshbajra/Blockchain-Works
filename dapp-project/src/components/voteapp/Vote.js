@@ -51,12 +51,14 @@ class Vote extends Component {
                 <div className="navbar">
                     <ul className="items">
                         <li className="item">
-                            <a className="item" href="/">Home</a>
+                            <a className="item" href="#">Home</a>
                         </li>
                         <li className="item ">
-                            <a href="/">Dashboard</a>
+                            <a href="#">Dashboard</a>
                         </li>
-                        <li className="item"><a href="">About</a></li>
+                        <li className="item">
+                            <a href="#">About</a>
+                        </li>
                     </ul>
                 </div>
                 {this.state.isOwner ? <Owner /> : <Voters />}
