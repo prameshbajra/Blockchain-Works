@@ -44,9 +44,9 @@ class Timer extends Component {
 
     renderMessage = () => {
         if (moment(this.state.startDate).unix()) {
-            if (moment().unix() <= moment(this.state.startDate).unix()) {
+            if (moment('2019-09-09').unix() <= moment(this.state.startDate).unix()) {
                 return (<h1>The elections has not yet started.</h1>);
-            } else if (moment().unix() >= moment(this.state.endDate).unix()) {
+            } else if (moment('2019-09-09').unix() >= moment(this.state.endDate).unix()) {
                 return (<div><h1 className="text-center">The election has already ended</h1>
                     <Results /></div>);
             }

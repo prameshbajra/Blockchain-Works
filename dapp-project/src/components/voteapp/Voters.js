@@ -52,10 +52,10 @@ class Voters extends Component {
                 const startDate = this.state.web3.toAscii(this.state.startDate).replace(/\u0000/g, '');
                 const endDate = this.state.web3.toAscii(this.state.endDate).replace(/\u0000/g, '');
                 if (moment(startDate).unix()) {
-                    if (moment().unix() < moment(startDate).unix()) {
+                    if (moment('2019-09-09').unix() < moment(startDate).unix()) {
                         this.setState(() => ({ message: "The elections has not yet started." }));
                         return;
-                    } else if ((moment().unix() > moment(endDate).unix())) {
+                    } else if ((moment('2019-09-09').unix() > moment(endDate).unix())) {
                         this.setState(() => ({ message: "The elections has already been completed." }));
                         return;
                     }

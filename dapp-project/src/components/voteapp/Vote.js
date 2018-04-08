@@ -51,13 +51,13 @@ class Vote extends Component {
                 <div className="navbar">
                     <ul className="items">
                         <li className="item">
-                            <a className="item" href="#">Home</a>
+                            <a className="item" href="./home.html">Home</a>
                         </li>
                         <li className="item ">
-                            <a href="#">Dashboard</a>
+                            <a href="./home.html#gotoDashboard">Dashboard</a>
                         </li>
                         <li className="item">
-                            <a href="#">About</a>
+                            <a href="./home.html#aboutus">About</a>
                         </li>
                     </ul>
                 </div>
